@@ -1,0 +1,369 @@
+﻿USE [ERP_db]
+
+/****** Object:  Table [dbo].[Appointment_Status]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Appointment_Status](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[active] [smallint] NULL,
+	[edit_lock] [smallint] NULL,
+ CONSTRAINT [PK_Appointment_Status] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Appointments]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Appointments](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[patient_id] [int] NOT NULL,
+	[doctor_id] [int] NOT NULL,
+	[meet_date] [datetime] NOT NULL,
+	[token] [int] NOT NULL,
+	[notes] [text] NULL,
+	[status] [smallint] NOT NULL,
+ CONSTRAINT [PK_Appointments] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Bill_Status]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Bill_Status](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[active] [nchar](10) NULL,
+ CONSTRAINT [PK_Bill_Status] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Bill_Types]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Bill_Types](
+	[id] [smallint] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NOT NULL,
+	[active] [smallint] NOT NULL,
+ CONSTRAINT [PK_Bill_Types] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Billing]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Billing](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[appointment_id] [int] NOT NULL,
+	[bill_number] [varchar](50) NOT NULL,
+	[bill_date] [datetime] NOT NULL,
+	[patient_id] [int] NOT NULL,
+	[bill_amount] [decimal](10, 2) NOT NULL,
+	[bill_paid] [decimal](10, 2) NOT NULL,
+	[bill_balance] [decimal](10, 2) NOT NULL,
+	[notes] [text] NULL,
+	[bill_status] [smallint] NOT NULL,
+	[bill_type] [smallint] NOT NULL,
+	[bill_created_userid] [int] NULL,
+ CONSTRAINT [PK_Billing] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Billing_Appointments]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Billing_Appointments](
+	[bill_id] [int] NOT NULL,
+	[appointment_id] [int] NOT NULL
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Departments]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Departments](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](max) NOT NULL,
+	[description] [text] NULL,
+	[active] [bit] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Doctors]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Doctors](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[first_name] [varchar](50) NULL,
+	[last_name] [varchar](50) NOT NULL,
+	[department_id] [int] NOT NULL,
+	[designation] [varchar](50) NULL,
+	[qualification] [varchar](max) NULL,
+	[specialization] [varchar](max) NULL,
+	[address] [varchar](max) NULL,
+	[city] [varchar](max) NULL,
+	[state] [varchar](50) NULL,
+	[zip] [varchar](50) NULL,
+	[phone] [varchar](50) NULL,
+	[email] [varchar](max) NULL,
+	[legal_id] [varchar](50) NULL,
+	[legal_id_expiry] [date] NULL,
+	[nationality] [varchar](50) NOT NULL,
+	[gender] [char](1) NOT NULL,
+	[dob] [date] NOT NULL,
+	[consultation_fee] [decimal](10, 3) NULL,
+	[user_id] [int] NOT NULL,
+	[active] [bit] NOT NULL,
+	[added_id] [int] NOT NULL,
+	[added_date] [datetime] NOT NULL,
+	[modified_id] [int] NOT NULL,
+	[modified_date] [datetime] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Log]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Log](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[Thread] [varchar](255) NOT NULL,
+	[Level] [varchar](50) NOT NULL,
+	[Logger] [varchar](255) NOT NULL,
+	[Message] [varchar](4000) NOT NULL,
+	[Exception] [varchar](2000) NULL
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Menu_Items]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Menu_Items](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[parent_id] [int] NULL,
+	[menu_name] [varchar](50) NOT NULL,
+	[menu_text] [varchar](50) NULL,
+	[active] [bit] NOT NULL,
+	[locked] [bit] NOT NULL,
+	[menu_order] [int] NULL
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Menu_User_Types]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Menu_User_Types](
+	[menu_id] [int] NOT NULL,
+	[user_type_id] [int] NOT NULL
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Options]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Options](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[op_name] [varchar](50) NULL,
+	[op_description] [varchar](max) NULL,
+	[op_value] [varchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Patient_Procedures]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Patient_Procedures](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[patient_id] [int] NOT NULL,
+	[doctor_id] [int] NOT NULL,
+	[appointment_id] [int] NOT NULL,
+	[procedure_id] [int] NOT NULL,
+	[notes] [text] NULL,
+	[fee] [decimal](10, 3) NOT NULL,
+	[status] [smallint] NOT NULL,
+ CONSTRAINT [PK_Patient_Procedures] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Patients]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Patients](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[patient_number] [varchar](20) NOT NULL,
+	[first_name] [varchar](50) NOT NULL,
+	[last_name] [varchar](50) NOT NULL,
+	[address] [varchar](max) NULL,
+	[city] [varchar](50) NULL,
+	[state] [varchar](50) NULL,
+	[zip] [varchar](50) NULL,
+	[phone] [varchar](max) NOT NULL,
+	[email] [varchar](max) NULL,
+	[legal_id] [varchar](50) NULL,
+	[legal_id_expiry] [date] NULL,
+	[nationality] [varchar](50) NOT NULL,
+	[gender] [char](1) NOT NULL,
+	[dob] [date] NOT NULL,
+	[history] [text] NULL,
+	[allergies] [text] NULL,
+	[added_id] [int] NOT NULL,
+	[added_date] [datetime] NOT NULL,
+	[modified_id] [int] NOT NULL,
+	[modified_date] [datetime] NOT NULL,
+	[active] [bit] NOT NULL,
+ CONSTRAINT [PK_Patients] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Procedure_Status]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Procedure_Status](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](50) NULL,
+	[active] [nchar](10) NULL,
+ CONSTRAINT [PK_Procedure_Status] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Procedure_Types]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Procedure_Types](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[type_name] [varchar](max) NOT NULL,
+	[description] [text] NOT NULL,
+	[active] [bit] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Procedures]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Procedures](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[name] [varchar](max) NOT NULL,
+	[description] [text] NOT NULL,
+	[type] [int] NOT NULL,
+	[fee] [decimal](10, 2) NOT NULL,
+	[active] [bit] NOT NULL,
+ CONSTRAINT [PK_Procedures] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Staff_Types]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Staff_Types](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[type_title] [varchar](50) NOT NULL,
+	[type_description] [text] NULL,
+	[active] [bit] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Staffs]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Staffs](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[first_name] [varchar](max) NOT NULL,
+	[last_name] [varchar](max) NOT NULL,
+	[staff_type_id] [int] NOT NULL,
+	[department_id] [int] NOT NULL,
+	[designation] [varchar](max) NULL,
+	[qualification] [varchar](max) NULL,
+	[address] [nchar](10) NOT NULL,
+	[city] [varchar](50) NULL,
+	[state] [varchar](50) NULL,
+	[zip] [varchar](50) NULL,
+	[phone] [varchar](max) NOT NULL,
+	[email] [varchar](max) NULL,
+	[legal_id] [varchar](50) NULL,
+	[legal_id_expiry] [date] NULL,
+	[nationality] [varchar](50) NULL,
+	[gender] [char](10) NOT NULL,
+	[dob] [date] NOT NULL,
+	[active] [bit] NULL,
+	[added_id] [int] NOT NULL,
+	[added_date] [datetime] NOT NULL,
+	[modified_id] [int] NOT NULL,
+	[modified_date] [datetime] NOT NULL,
+	[user_id] [int] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[User_Types]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[User_Types](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[type_name] [varchar](50) NOT NULL,
+	[description] [text] NULL,
+	[active] [bit] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/****** Object:  Table [dbo].[Users]    Script Date: 02-03-2018 15:54:37 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+CREATE TABLE [dbo].[Users](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[emp_id] [varchar](20) NOT NULL,
+	[password] [varbinary](max) NOT NULL,
+	[salt] [varbinary](4) NOT NULL,
+	[user_type_id] [int] NOT NULL,
+	[active] [bit] NOT NULL,
+	[log_date] [datetime] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+ALTER TABLE [dbo].[Bill_Types] ADD  CONSTRAINT [DF_Bill_Types_active]  DEFAULT ((1)) FOR [active]
+

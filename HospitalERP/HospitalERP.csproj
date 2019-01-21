@@ -1,0 +1,593 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A92DE29E-2B82-44E1-9887-BBF9B3BB27C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HospitalERP</RootNamespace>
+    <AssemblyName>InTab ERP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>G:\DotNet Projects\HospitalERP\publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7D89A6379B6C31EEEB1E58386EB80C54F274A386</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>HospitalERP_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo_n2x_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationBlocks.Data.2.0.0\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Smo, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.11\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetBilling.Designer.cs">
+      <DependentUpon>DataSetBilling.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="DataSetPatient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPatient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppointmentBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppointmentBill.Designer.cs">
+      <DependentUpon>frmAppointmentBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAppointments.Designer.cs">
+      <DependentUpon>frmAppointments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBilling.Designer.cs">
+      <DependentUpon>frmBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsentForm.Designer.cs">
+      <DependentUpon>frmConsentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultationBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultationBill.Designer.cs">
+      <DependentUpon>frmConsultationBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultationDetails.Designer.cs">
+      <DependentUpon>frmConsultationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultationHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultationHistory.Designer.cs">
+      <DependentUpon>frmConsultationHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConsultations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultations.Designer.cs">
+      <DependentUpon>frmConsultations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDbConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDbConfig.Designer.cs">
+      <DependentUpon>frmDbConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDepartments.Designer.cs">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDoctors.Designer.cs">
+      <DependentUpon>frmDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicine.Designer.cs">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicinePrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicinePrint.Designer.cs">
+      <DependentUpon>frmMedicinePrint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMedicineTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMedicineTypes.Designer.cs">
+      <DependentUpon>frmMedicineTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOneTimeBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOneTimeBill.Designer.cs">
+      <DependentUpon>frmOneTimeBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatient.Designer.cs">
+      <DependentUpon>frmPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatientDues.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatientDues.Designer.cs">
+      <DependentUpon>frmPatientDues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcedures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcedures.Designer.cs">
+      <DependentUpon>frmProcedures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProceduresBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProceduresBill.Designer.cs">
+      <DependentUpon>frmProceduresBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProcTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProcTypes.Designer.cs">
+      <DependentUpon>frmProcTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReferToDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReferToDoctor.Designer.cs">
+      <DependentUpon>frmReferToDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReports.Designer.cs">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptBilling.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptBilling.Designer.cs">
+      <DependentUpon>frmRptBilling.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptMedical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptMedical.Designer.cs">
+      <DependentUpon>frmRptMedical.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptPatient.Designer.cs">
+      <DependentUpon>frmRptPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRptSickLeave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptSickLeave.designer.cs">
+      <DependentUpon>frmRptSickLeave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffs.Designer.cs">
+      <DependentUpon>frmStaffs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStaffTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStaffTypes.Designer.cs">
+      <DependentUpon>frmStaffTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserRoles.Designer.cs">
+      <DependentUpon>frmUserRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CommonLogger.cs" />
+    <Compile Include="Helpers\CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Helpers\DBHelper.cs" />
+    <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Procedures\Appointments.cs" />
+    <Compile Include="Procedures\Bill.cs" />
+    <Compile Include="Procedures\ConsultationDetails.cs" />
+    <Compile Include="Procedures\Departments.cs" />
+    <Compile Include="Procedures\Doctors.cs" />
+    <Compile Include="Procedures\LoggedUser.cs" />
+    <Compile Include="Procedures\Medicines.cs" />
+    <Compile Include="Procedures\MedicineTypes.cs" />
+    <Compile Include="Procedures\Menus.cs" />
+    <Compile Include="Procedures\OptionVals.cs" />
+    <Compile Include="Procedures\Patients.cs" />
+    <Compile Include="Procedures\ProcTests.cs" />
+    <Compile Include="Procedures\ProcTypes.cs" />
+    <Compile Include="Procedures\Staffs.cs" />
+    <Compile Include="Procedures\StaffTypes.cs" />
+    <Compile Include="Procedures\UserRoles.cs" />
+    <Compile Include="Procedures\Users.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAppointmentBill.resx">
+      <DependentUpon>frmAppointmentBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAppointments.resx">
+      <DependentUpon>frmAppointments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBilling.resx">
+      <DependentUpon>frmBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsentForm.resx">
+      <DependentUpon>frmConsentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultationBill.resx">
+      <DependentUpon>frmConsultationBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultationDetails.resx">
+      <DependentUpon>frmConsultationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultationHistory.resx">
+      <DependentUpon>frmConsultationHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultations.resx">
+      <DependentUpon>frmConsultations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDashboard.resx">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDbConfig.resx">
+      <DependentUpon>frmDbConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDepartments.resx">
+      <DependentUpon>frmDepartments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDoctors.resx">
+      <DependentUpon>frmDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicine.resx">
+      <DependentUpon>frmMedicine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicinePrint.resx">
+      <DependentUpon>frmMedicinePrint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMedicineTypes.resx">
+      <DependentUpon>frmMedicineTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOneTimeBill.resx">
+      <DependentUpon>frmOneTimeBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatient.resx">
+      <DependentUpon>frmPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatientDues.resx">
+      <DependentUpon>frmPatientDues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProcedures.resx">
+      <DependentUpon>frmProcedures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProceduresBill.resx">
+      <DependentUpon>frmProceduresBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProcTypes.resx">
+      <DependentUpon>frmProcTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReferToDoctor.resx">
+      <DependentUpon>frmReferToDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReports.resx">
+      <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptBilling.resx">
+      <DependentUpon>frmRptBilling.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptMedical.resx">
+      <DependentUpon>frmRptMedical.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptPatient.resx">
+      <DependentUpon>frmRptPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRptSickLeave.resx">
+      <DependentUpon>frmRptSickLeave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffs.resx">
+      <DependentUpon>frmStaffs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStaffTypes.resx">
+      <DependentUpon>frmStaffTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserRoles.resx">
+      <DependentUpon>frmUserRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ReportBilling.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportPatient.rdlc" />
+    <EmbeddedResource Include="ReportSickLeave.rdlc" />
+    <EmbeddedResource Include="TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSetBilling.xsc">
+      <DependentUpon>DataSetBilling.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBilling.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBilling.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetBilling.xss">
+      <DependentUpon>DataSetBilling.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPatient.xsc">
+      <DependentUpon>DataSetPatient.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPatient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPatient.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetPatient.xss">
+      <DependentUpon>DataSetPatient.xsd</DependentUpon>
+    </None>
+    <None Include="HospitalERP_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hos.ico" />
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\erp.png" />
+    <EmbeddedResource Include="procedures.txt" />
+    <None Include="images\medicines.png" />
+    <None Include="images\medicine-types.png" />
+    <Content Include="logo_n2x_icon.ico" />
+    <Content Include="procedures.sql" />
+    <None Include="Resources\medicine.bmp" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+    <Folder Include="SqlCustom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
