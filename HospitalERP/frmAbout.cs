@@ -99,5 +99,14 @@ namespace HospitalERP
             }
         }
         #endregion
+
+        private void linkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Specify that the link was visited.
+            this.linkAbout.LinkVisited = true;
+
+            // Navigate to a URL.
+            System.Diagnostics.Process.Start("http://www.insynctechs.com");
+        }
     }
 }

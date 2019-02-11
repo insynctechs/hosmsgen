@@ -35,7 +35,8 @@ namespace HospitalERP.Procedures
                 sqlParam[13] = new SqlParameter("@history", history);
                 sqlParam[14] = new SqlParameter("@allergies", allergies);
                 sqlParam[15] = new SqlParameter("@loggedid", loggedid);
-                
+                //sqlParam[16] = new SqlParameter("@patient_type", patient_type);
+
                 ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspPatients_Add", sqlParam).ToString());
             }
             catch (DbException ex)

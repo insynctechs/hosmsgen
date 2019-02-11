@@ -516,15 +516,24 @@ namespace HospitalERP
                         break;
                     case 1:
                         cmbProcedure.DataSource = objCD.ProceduresCombo(0);
+                        cmbProcedure.DisplayMember = "name";
+                        cmbProcedure.ValueMember = "id";
                         cmbStatus.DataSource = objCD.StatusCombo(0);
                         getProcedureList();
                         break;
 
                     case 2:
-                        cmbMedicine.DataSource = objMed.MedicinesCombo(0);                        
-                        getMedicineList();
+                        
+                        DataTable dtMed = objMed.MedicinesCombo(0);
+                        if (dtMed.Rows.Count > 0)
+                        {
+                            cmbMedicine.DataSource = dtMed;
+                            cmbMedicine.DisplayMember = "name";
+                            cmbMedicine.ValueMember = "id";
+                            getMedicineList();
+                        }
                         break;
-
+                        
                     case 3:
                         dgvHistoryProcedures.AutoGenerateColumns = false;
                         setGridViews();

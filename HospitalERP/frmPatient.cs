@@ -45,8 +45,16 @@ namespace HospitalERP
                         gender = 'M';
                     else
                         gender = 'F';
+                    /*
+                    char patient_type;
+                    if (rbInpatient.Checked == true)
+                        patient_type = 'I';
+                    else
+                        patient_type = 'O';
+                        */
                     if (txtID.Text.Trim() == "") //add data
                     {
+                        dtpPathakaExpiry.Visible = true;
                         exists = pat.existPatients(txtFirstName.Text.Trim(), txtLastName.Text.Trim(), gender, Convert.ToDateTime(dtpDob.Text), txtNationality.Text.Trim(), txtPhone.Text.Trim());
                         if (exists <= 0)
                         {
@@ -111,6 +119,7 @@ namespace HospitalERP
                     }
 
                 }
+                dtpPathakaExpiry.Visible = false;
             }
             catch (Exception ex)
             {

@@ -120,6 +120,7 @@
             this.btnAddMed = new System.Windows.Forms.Button();
             this.txtPrescription = new System.Windows.Forms.TextBox();
             this.txtType = new System.Windows.Forms.TextBox();
+            this.cmbMedicine = new System.Windows.Forms.ComboBox();
             this.tbPgHistory = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvApptHistory = new System.Windows.Forms.DataGridView();
@@ -170,6 +171,7 @@
             this.flowLayoutPanel23 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSaveProcedure = new System.Windows.Forms.Button();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.cmbProcedure = new System.Windows.Forms.ComboBox();
             this.tbPgDiag = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cmbAppStatus = new System.Windows.Forms.ComboBox();
@@ -977,6 +979,7 @@
             this.tableLayoutPanel5.Controls.Add(this.flowLayoutPanel5, 1, 4);
             this.tableLayoutPanel5.Controls.Add(this.txtPrescription, 1, 3);
             this.tableLayoutPanel5.Controls.Add(this.txtType, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.cmbMedicine, 1, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(23, 3, 3, 3);
@@ -1154,6 +1157,14 @@
             this.txtType.ReadOnly = true;
             this.txtType.Size = new System.Drawing.Size(100, 27);
             this.txtType.TabIndex = 1;
+            // 
+            // cmbMedicine
+            // 
+            this.cmbMedicine.FormattingEnabled = true;
+            this.cmbMedicine.Location = new System.Drawing.Point(265, 43);
+            this.cmbMedicine.Name = "cmbMedicine";
+            this.cmbMedicine.Size = new System.Drawing.Size(199, 28);
+            this.cmbMedicine.TabIndex = 79;
             // 
             // tbPgHistory
             // 
@@ -1573,6 +1584,7 @@
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel20, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel22, 0, 3);
             this.tableLayoutPanel4.Controls.Add(this.flowLayoutPanel23, 1, 5);
+            this.tableLayoutPanel4.Controls.Add(this.cmbProcedure, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(23, 3, 3, 3);
@@ -1769,6 +1781,14 @@
             this.btnAddNew.Text = "ADD NEW";
             this.btnAddNew.UseVisualStyleBackColor = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNewProcedure_Click);
+            // 
+            // cmbProcedure
+            // 
+            this.cmbProcedure.FormattingEnabled = true;
+            this.cmbProcedure.Location = new System.Drawing.Point(265, 43);
+            this.cmbProcedure.Name = "cmbProcedure";
+            this.cmbProcedure.Size = new System.Drawing.Size(200, 28);
+            this.cmbProcedure.TabIndex = 79;
             // 
             // tbPgDiag
             // 
@@ -2137,9 +2157,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewButtonColumn btnProcEdit;
         private System.Windows.Forms.DataGridViewButtonColumn btnProcDelete;
-        private Helpers.CustomComboBox cmbMedicine;
+        //private Helpers.CustomComboBox cmbMedicine;
         private System.Windows.Forms.Button btnDues;
-        private Helpers.CustomComboBox cmbProcedure;
+        //private Helpers.CustomComboBox cmbProcedure;
         private System.Windows.Forms.Button btnConsent;
+        private System.Windows.Forms.ComboBox cmbProcedure;
+        private System.Windows.Forms.ComboBox cmbMedicine;
     }
 }

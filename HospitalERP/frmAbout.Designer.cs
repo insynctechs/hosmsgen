@@ -29,10 +29,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.linkAbout = new System.Windows.Forms.LinkLabel();
             this.labelVersion = new System.Windows.Forms.Label();
-            this.labelCopyright = new System.Windows.Forms.Label();
-            this.okButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.okButton = new System.Windows.Forms.Button();
+            this.labelCopyright = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,24 +44,39 @@
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel.Controls.Add(this.linkAbout, 1, 6);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBox1, 1, 0);
-            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 6);
-            this.tableLayoutPanel.Controls.Add(this.label1, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 7);
+            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.label1, 1, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 7;
+            this.tableLayoutPanel.RowCount = 8;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.Size = new System.Drawing.Size(497, 336);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(497, 373);
             this.tableLayoutPanel.TabIndex = 0;
+            // 
+            // linkAbout
+            // 
+            this.linkAbout.AutoSize = true;
+            this.linkAbout.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkAbout.Location = new System.Drawing.Point(10, 297);
+            this.linkAbout.Margin = new System.Windows.Forms.Padding(10, 0, 3, 0);
+            this.linkAbout.Name = "linkAbout";
+            this.linkAbout.Size = new System.Drawing.Size(205, 21);
+            this.linkAbout.TabIndex = 1;
+            this.linkAbout.TabStop = true;
+            this.linkAbout.Text = "http://www.insynctechs.com";
+            this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAbout_LinkClicked);
             // 
             // labelVersion
             // 
@@ -75,33 +91,8 @@
             this.labelVersion.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
             this.labelVersion.Size = new System.Drawing.Size(488, 30);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "Version 1.0.0 (Release)";
+            this.labelVersion.Text = "Version 2.0.0 (Release)";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelCopyright
-            // 
-            this.labelCopyright.AutoSize = true;
-            this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelCopyright.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCopyright.Location = new System.Drawing.Point(6, 87);
-            this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 100);
-            this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.labelCopyright.Size = new System.Drawing.Size(488, 30);
-            this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = " © 2018 TABORE TECH - INSYNC TECH SOLUTIONS";
-            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // okButton
-            // 
-            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(419, 300);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 33);
-            this.okButton.TabIndex = 24;
-            this.okButton.Text = "&OK";
             // 
             // pictureBox1
             // 
@@ -113,11 +104,36 @@
             this.pictureBox1.TabIndex = 25;
             this.pictureBox1.TabStop = false;
             // 
+            // okButton
+            // 
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.okButton.Location = new System.Drawing.Point(419, 337);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 33);
+            this.okButton.TabIndex = 24;
+            this.okButton.Text = "&OK";
+            // 
+            // labelCopyright
+            // 
+            this.labelCopyright.AutoSize = true;
+            this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCopyright.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCopyright.Location = new System.Drawing.Point(6, 267);
+            this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 100);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            this.labelCopyright.Size = new System.Drawing.Size(488, 30);
+            this.labelCopyright.TabIndex = 21;
+            this.labelCopyright.Text = " © 2019 TABORE TECHNOLOGIES - INSYNC TECH SOLUTIONS";
+            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 117);
+            this.label1.Location = new System.Drawing.Point(3, 87);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
             this.label1.Size = new System.Drawing.Size(491, 180);
@@ -130,7 +146,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(515, 354);
+            this.ClientSize = new System.Drawing.Size(515, 391);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -156,5 +172,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkAbout;
     }
 }
