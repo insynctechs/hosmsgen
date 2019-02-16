@@ -89,6 +89,50 @@ namespace HospitalERP.Procedures
 
         }
 
+
+        public DataTable InvestigationsCombo(int id)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("id");
+                dt.Columns.Add("name");
+                dt.Rows.Add(new object[] { "0", "Select Type" });
+                DataTable dt1 = new DataTable();
+                dt1 = GetInvestigationsIDName(id);
+                foreach (DataRow dr in dt1.Rows)
+                {
+                    dt.Rows.Add(dr.ItemArray);
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+        public DataTable GetInvestigationsIDName(int id)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", id);
+                DataSet dt = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspInvestigations_Combo", sqlParam);
+                return dt.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+
+
         public DataTable StatusCombo(int id)
         {
             try
@@ -129,7 +173,49 @@ namespace HospitalERP.Procedures
             }
 
         }
-        
+
+        public DataTable InvStatusCombo(int id)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("id");
+                dt.Columns.Add("name");
+                dt.Rows.Add(new object[] { "0", "Select Type" });
+                DataTable dt1 = new DataTable();
+                dt1 = GetInvStatusIDName(id);
+                foreach (DataRow dr in dt1.Rows)
+                {
+                    dt.Rows.Add(dr.ItemArray);
+                }
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+        public DataTable GetInvStatusIDName(int id)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", id);
+                DataSet dt = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspInvestigationStatus_Get", sqlParam);
+                return dt.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+
         public DataTable getProceduresFromApptID(int id)
         {
             try
@@ -146,6 +232,42 @@ namespace HospitalERP.Procedures
             }
 
         }
+
+        public DataTable getInvestigationsFromApptID(int id)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", id);
+                DataSet ds = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspConsultationDet_Investigations_Get", sqlParam);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+
+        public DataTable getInvestigationsFromInvID(int id)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", id);
+                DataSet ds = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspConsultationDet_Investigations_Single", sqlParam);
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
 
         public DataTable getMedicalReportFromID(int id)
         {
@@ -233,18 +355,37 @@ namespace HospitalERP.Procedures
 
         }
 
-        public int saveDiagnosis(int appid, int patientid, string history, string allergy, string app_notes, int status)
+        public string getInvestigationFees(int id)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", id);
+                DataSet ds = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspInvestigations_GetFee", sqlParam);
+                return ds.Tables[0].Rows[0].ItemArray[0].ToString();
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+
+        }
+
+
+        public int saveDiagnosis(int appid, int patientid, string history, string allergy, string app_notes, int status, string discharge_summary)
         {
             int ret = -1;
             try
             {
-                SqlParameter[] sqlParam = new SqlParameter[6];
+                SqlParameter[] sqlParam = new SqlParameter[7];
                 sqlParam[0] = new SqlParameter("@appointment_id", appid);
                 sqlParam[1] = new SqlParameter("@patient_id", patientid);
                 sqlParam[2] = new SqlParameter("@history", history);
                 sqlParam[3] = new SqlParameter("@allergies", allergy);
                 sqlParam[4] = new SqlParameter("@notes", app_notes);
                 sqlParam[5] = new SqlParameter("@status", status);
+                sqlParam[6] = new SqlParameter("@discharge_smry", discharge_summary);
                 ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspConsultationDet_SaveDiagnosis", sqlParam).ToString());
             }
             catch (Exception ex)
@@ -326,6 +467,80 @@ namespace HospitalERP.Procedures
             }
             return ret;
         }
+
+
+        public int addInvestigations(int patientid, int doctorid, int apptid, int invid, string notes, decimal fee, int status)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[7];
+                sqlParam[0] = new SqlParameter("@doctor_id", doctorid);
+                sqlParam[1] = new SqlParameter("@patient_id", patientid);
+                sqlParam[2] = new SqlParameter("@appointment_id", apptid);
+                sqlParam[3] = new SqlParameter("@investigation_id", invid);
+                sqlParam[4] = new SqlParameter("@notes", notes);
+                sqlParam[5] = new SqlParameter("@fee", fee);
+                sqlParam[6] = new SqlParameter("@status", status);
+                ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspConsultationDet_AddInvestigation", sqlParam).ToString());
+            }
+            catch (Exception ex)
+            {
+                ret = -1;
+                Helpers.CommonLogger.Error(ex.Message, ex);
+            }
+            return ret;
+        }
+
+        public int editInvestigations(int id, int patientid, int doctorid, int apptid, int invid, string notes, decimal fee, int status)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[8];
+                sqlParam[0] = new SqlParameter("@doctor_id", doctorid);
+                sqlParam[1] = new SqlParameter("@patient_id", patientid);
+                sqlParam[2] = new SqlParameter("@appointment_id", apptid);
+                sqlParam[3] = new SqlParameter("@investigation_id", invid);
+                sqlParam[4] = new SqlParameter("@notes", notes);
+                sqlParam[5] = new SqlParameter("@fee", fee);
+                sqlParam[6] = new SqlParameter("@status", status);
+                sqlParam[7] = new SqlParameter("@id", id);
+                ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspConsultationDet_EditInvestigation", sqlParam).ToString());
+            }
+            catch (Exception ex)
+            {
+                ret = -1;
+                Helpers.CommonLogger.Error(ex.Message, ex);
+            }
+            return ret;
+        }
+
+        public int editInvestigationFees(DataTable dtProc)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[2];
+
+                foreach (DataRow row in dtProc.Rows)
+                {
+                    sqlParam[0] = new SqlParameter("@id", row["id"].ToString());
+                    sqlParam[1] = new SqlParameter("@fee", row["fee"].ToString());
+                    ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspConsultationDet_EditInvestigationFees", sqlParam).ToString());
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                ret = -1;
+                Helpers.CommonLogger.Error(ex.Message, ex);
+            }
+            return ret;
+        }
+
         public void Dispose()
         {
             conn = null;
@@ -379,6 +594,23 @@ namespace HospitalERP.Procedures
                 SqlParameter[] sqlParam = new SqlParameter[1];
                 sqlParam[0] = new SqlParameter("@id", pat_proc_id);
                 ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspProcedures_DeletePatientProcedures", sqlParam).ToString());
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return -1;
+            }
+            return ret;
+        }
+
+        public int DeletePatientInvestigation(int pat_proc_id)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", pat_proc_id);
+                ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspInvestigations_DeletePatientInvestigations", sqlParam).ToString());
             }
             catch (Exception ex)
             {

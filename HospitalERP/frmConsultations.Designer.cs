@@ -184,7 +184,7 @@
             this.btnList.Name = "btnList";
             this.btnList.Size = new System.Drawing.Size(140, 29);
             this.btnList.TabIndex = 54;
-            this.btnList.Text = "REFRESH";
+            this.btnList.Text = "GO";
             this.btnList.UseVisualStyleBackColor = false;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 

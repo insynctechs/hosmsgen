@@ -52,8 +52,10 @@ namespace HospitalERP
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
                 dgvPatient.AutoGenerateColumns = false;
                 dgvApp.AutoGenerateColumns = false;
+                PopulateStatus();
                 GetDoctorsCombo(0);
                 PopulateSearch();
+                
                 if (patient_id > 0)
                 {
                     txtPatientID.Text = patient_id.ToString();
@@ -205,6 +207,20 @@ namespace HospitalERP
             getAppointmentList(1);
         }
 
+        private void PopulateStatus()
+        {
+            try
+            {
+                cmbStatus.DataSource = app.getAppointmentStatus(1);
+                cmbStatus.ValueMember = "id";
+                cmbStatus.DisplayMember = "name";
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
         private void getAppointmentList(int click=0)
         {
             /*DataGridViewComboBoxColumn dcombo;
@@ -214,7 +230,7 @@ namespace HospitalERP
             dcombo.ValueMember = "id";*/
             try
             {
-                DataTable dtApps = app.getAllAppointmentsForDate(Convert.ToDateTime(dtpAppDate.Text), Int32.Parse(cmbDoc.SelectedValue.ToString()));
+                DataTable dtApps = app.getAllAppointmentsForDate(Convert.ToDateTime(dtpAppDate.Text), Int32.Parse(cmbDoc.SelectedValue.ToString()), Int32.Parse(cmbStatus.SelectedValue.ToString()));
                 dgvApp.DataSource = dtApps;
                 if (dtApps.Rows.Count == 0 && click == 1)
                 {
@@ -274,6 +290,7 @@ namespace HospitalERP
         {
             try
             {
+                /*
                 TimeSpan difference = DateTime.Now - dtpAppDate.Value;
                 if (txtPatNum.Text.Trim() != "" && cmbDoc.SelectedValue.ToString() != Convert.ToString(0) && Convert.ToInt32(difference.TotalDays) <= 0)
                 {
@@ -285,6 +302,7 @@ namespace HospitalERP
                     btnSave.Enabled = false;
                     btnSave.Cursor = Cursors.No;
                 }
+                */
             }
             catch (Exception ex)
             {
@@ -472,8 +490,14 @@ namespace HospitalERP
             {
                 txtPatientID.Text = pid;
                 txtPatNum.Text = pnum;
+                /* SJ COMMENTED ON 12FEB2019 
                 MessageBox.Show("Please select the Doctor");
                 cmbDoc.Focus();
+                ****/
+
+                frmReferToDoctor frt = new frmReferToDoctor( Int32.Parse(txtPatientID.Text.Trim()));
+                frt.ShowDialog(this);
+
             }
             catch (Exception ex)
             {

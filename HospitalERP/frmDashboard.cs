@@ -241,11 +241,11 @@ namespace HospitalERP
         {
             try
             {
-                if (Application.OpenForms.OfType<frmProcedures>().Count() == 1)
-                    Application.OpenForms.OfType<frmProcedures>().First().BringToFront();
+                if (Application.OpenForms.OfType<frmInvestigations>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigations>().First().BringToFront();
                 else
                 {
-                    frmProcedures frm = new frmProcedures();
+                    frmInvestigations frm = new frmInvestigations();
                     frm.MdiParent = this.MdiParent;
                     frm.Show();
                 }
@@ -309,11 +309,11 @@ namespace HospitalERP
         {
             try
             {
-                if (Application.OpenForms.OfType<frmProcTypes>().Count() == 1)
-                    Application.OpenForms.OfType<frmProcTypes>().First().BringToFront();
+                if (Application.OpenForms.OfType<frmInvestigationTypes>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigationTypes>().First().BringToFront();
                 else
                 {
-                    frmProcTypes frm = new frmProcTypes();
+                    frmInvestigationTypes frm = new frmInvestigationTypes();
                     frm.MdiParent = this.MdiParent;
                     frm.Show();
                 }

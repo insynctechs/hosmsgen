@@ -298,7 +298,7 @@ namespace HospitalERP
                 foreach (DataRow dr in dtMenu.Rows)
                 {
                     string menu_name = dr["menu_name"].ToString();
-                    MainMenu.Items.RemoveByKey(menu_name);
+                    MainMenu.Items.RemoveByKey(menu_name.Trim());
                 }
             }
             catch (Exception ex)
@@ -590,9 +590,15 @@ namespace HospitalERP
         {
             try
             {
-                frmRptBilling rep = new frmRptBilling();
-                rep.MdiParent = this;
-                rep.Show();
+                if (Application.OpenForms.OfType<frmRptBilling>().Count() == 1)
+                    Application.OpenForms.OfType<frmRptBilling>().First().BringToFront();
+                else
+                {
+
+                    frmRptBilling rep = new frmRptBilling();
+                    rep.MdiParent = this;
+                    rep.Show();
+                }
             }
             catch (Exception ex)
             {
@@ -606,9 +612,14 @@ namespace HospitalERP
         {
             try
             {
-                frmRptPatient fmPat = new frmRptPatient();
-                fmPat.MdiParent = this;
-                fmPat.Show();
+                if (Application.OpenForms.OfType<frmRptPatient>().Count() == 1)
+                    Application.OpenForms.OfType<frmRptPatient>().First().BringToFront();
+                else
+                {
+                    frmRptPatient fmPat = new frmRptPatient();
+                    fmPat.MdiParent = this;
+                    fmPat.Show();
+                }
             }
             catch (Exception ex)
             {
@@ -665,9 +676,15 @@ namespace HospitalERP
         {
             try
             {
-                frmMedicineTypes fdc = new frmMedicineTypes();
-                fdc.MdiParent = this;
-                fdc.Show();
+                if (Application.OpenForms.OfType<frmMedicineTypes>().Count() == 1)
+                    Application.OpenForms.OfType<frmMedicineTypes>().First().BringToFront();
+                else
+                {
+
+                    frmMedicineTypes fdc = new frmMedicineTypes();
+                    fdc.MdiParent = this;
+                    fdc.Show();
+                }
             }
             catch (Exception ex)
             {
@@ -680,15 +697,60 @@ namespace HospitalERP
         {
             try
             {
-                frmMedicine fm = new frmMedicine();
-                fm.MdiParent = this;
-                fm.Show();
+                if (Application.OpenForms.OfType<frmMedicine>().Count() == 1)
+                    Application.OpenForms.OfType<frmMedicine>().First().BringToFront();
+                else
+                {
+
+                    frmMedicine fm = new frmMedicine();
+                    fm.MdiParent = this;
+                    fm.Show();
+                }
             }
             catch (Exception ex)
             {
                 CommonLogger.Info(ex.ToString());
             }
 
+        }
+
+        private void menuItemInves_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmInvestigations>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigations>().First().BringToFront();
+                else
+                {
+
+                    frmInvestigations fdc = new frmInvestigations();
+                    fdc.MdiParent = this;
+                    fdc.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void menuItemInvesType_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmInvestigationTypes>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigationTypes>().First().BringToFront();
+                else
+                {
+                    frmInvestigationTypes frm = new frmInvestigationTypes();
+                    frm.MdiParent = this;
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
         }
     }
 }

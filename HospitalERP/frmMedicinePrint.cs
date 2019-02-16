@@ -47,7 +47,7 @@ namespace HospitalERP
                 lblRegNo.Text = dt.Rows[0]["patient_number"].ToString();
                 lblName.Text = dt.Rows[0]["patient_name"].ToString();
                 lblGender.Text = Utils.Gender[dt.Rows[0]["gender"].ToString()];
-                //lblMobileNo.Text = dt.Rows[0]["phone"].ToString();
+                lblAge.Text = dt.Rows[0]["age"].ToString();
                 lblDoctor.Text = Utils.FormatDoctorName(dt.Rows[0]["doctor_name"].ToString());                                
                 lblDate.Text = Utils.FormatDateShort(DateTime.Today.ToString());
                 dgvMedicine.AutoGenerateColumns = false;

@@ -933,35 +933,83 @@
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="btnSave.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="lblStatusCombo.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="btnSave.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 11.25pt, style=Bold</value>
+  <data name="lblStatusCombo.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 12pt, style=Bold</value>
   </data>
-  <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="lblStatusCombo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 29</value>
+  <data name="lblStatusCombo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
   </data>
-  <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="lblStatusCombo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 19</value>
   </data>
-  <data name="btnSave.Text" xml:space="preserve">
-    <value>SCHEDULE</value>
+  <data name="lblStatusCombo.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
+  <data name="lblStatusCombo.Text" xml:space="preserve">
+    <value>Status: </value>
   </data>
-  <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblStatusCombo.Name" xml:space="preserve">
+    <value>lblStatusCombo</value>
   </data>
-  <data name="&gt;&gt;btnSave.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
+  <data name="&gt;&gt;lblStatusCombo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblStatusCombo.Parent" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;lblStatusCombo.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="cmbStatus.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 11.25pt</value>
+  </data>
+  <data name="cmbStatus.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 22</value>
+  </data>
+  <data name="cmbStatus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 26</value>
+  </data>
+  <data name="cmbStatus.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;cmbStatus.Name" xml:space="preserve">
+    <value>cmbStatus</value>
+  </data>
+  <data name="&gt;&gt;cmbStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbStatus.Parent" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;cmbStatus.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>528, 3</value>
+  </data>
+  <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 64</value>
+  </data>
+  <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Name" xml:space="preserve">
+    <value>flowLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel7.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="btnList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 11.25pt, style=Bold</value>
@@ -970,7 +1018,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 3</value>
+    <value>3, 3</value>
   </data>
   <data name="btnList.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 29</value>
@@ -979,7 +1027,7 @@
     <value>8</value>
   </data>
   <data name="btnList.Text" xml:space="preserve">
-    <value>REFRESH</value>
+    <value>GO</value>
   </data>
   <data name="&gt;&gt;btnList.Name" xml:space="preserve">
     <value>btnList</value>
@@ -991,10 +1039,10 @@
     <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;btnList.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="txtAppID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 38</value>
+    <value>97, 3</value>
   </data>
   <data name="txtAppID.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 26</value>
@@ -1015,10 +1063,10 @@
     <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;txtAppID.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="txtPatientID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 38</value>
+    <value>123, 3</value>
   </data>
   <data name="txtPatientID.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 26</value>
@@ -1039,16 +1087,16 @@
     <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;txtPatientID.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>528, 23</value>
+    <value>756, 23</value>
   </data>
   <data name="flowLayoutPanel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 23, 3, 3</value>
   </data>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 44</value>
+    <value>153, 44</value>
   </data>
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1063,13 +1111,13 @@
     <value>flowLayoutPanel6</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 41</value>
+    <value>31, 41</value>
   </data>
   <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>735, 68</value>
+    <value>945, 68</value>
   </data>
   <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>31</value>
@@ -1163,72 +1211,6 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Appointments</value>
-  </data>
-  <data name="&gt;&gt;PID.Name" xml:space="preserve">
-    <value>PID</value>
-  </data>
-  <data name="&gt;&gt;PID.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PNum.Name" xml:space="preserve">
-    <value>PNum</value>
-  </data>
-  <data name="&gt;&gt;PNum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Pname.Name" xml:space="preserve">
-    <value>Pname</value>
-  </data>
-  <data name="&gt;&gt;Pname.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PGender.Name" xml:space="preserve">
-    <value>PGender</value>
-  </data>
-  <data name="&gt;&gt;PGender.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PAge.Name" xml:space="preserve">
-    <value>PAge</value>
-  </data>
-  <data name="&gt;&gt;PAge.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PAddress.Name" xml:space="preserve">
-    <value>PAddress</value>
-  </data>
-  <data name="&gt;&gt;PAddress.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PPhone.Name" xml:space="preserve">
-    <value>PPhone</value>
-  </data>
-  <data name="&gt;&gt;PPhone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PDoctor.Name" xml:space="preserve">
-    <value>PDoctor</value>
-  </data>
-  <data name="&gt;&gt;PDoctor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PVisitDate.Name" xml:space="preserve">
-    <value>PVisitDate</value>
-  </data>
-  <data name="&gt;&gt;PVisitDate.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PBtnSelect.Name" xml:space="preserve">
-    <value>PBtnSelect</value>
-  </data>
-  <data name="&gt;&gt;PBtnSelect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PBtnHistory.Name" xml:space="preserve">
-    <value>PBtnHistory</value>
-  </data>
-  <data name="&gt;&gt;PBtnHistory.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AID.Name" xml:space="preserve">
     <value>AID</value>
@@ -1325,6 +1307,72 @@
   </data>
   <data name="&gt;&gt;ADues.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PID.Name" xml:space="preserve">
+    <value>PID</value>
+  </data>
+  <data name="&gt;&gt;PID.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PNum.Name" xml:space="preserve">
+    <value>PNum</value>
+  </data>
+  <data name="&gt;&gt;PNum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pname.Name" xml:space="preserve">
+    <value>Pname</value>
+  </data>
+  <data name="&gt;&gt;Pname.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PGender.Name" xml:space="preserve">
+    <value>PGender</value>
+  </data>
+  <data name="&gt;&gt;PGender.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PAge.Name" xml:space="preserve">
+    <value>PAge</value>
+  </data>
+  <data name="&gt;&gt;PAge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PAddress.Name" xml:space="preserve">
+    <value>PAddress</value>
+  </data>
+  <data name="&gt;&gt;PAddress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PPhone.Name" xml:space="preserve">
+    <value>PPhone</value>
+  </data>
+  <data name="&gt;&gt;PPhone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PDoctor.Name" xml:space="preserve">
+    <value>PDoctor</value>
+  </data>
+  <data name="&gt;&gt;PDoctor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PVisitDate.Name" xml:space="preserve">
+    <value>PVisitDate</value>
+  </data>
+  <data name="&gt;&gt;PVisitDate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PBtnSelect.Name" xml:space="preserve">
+    <value>PBtnSelect</value>
+  </data>
+  <data name="&gt;&gt;PBtnSelect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PBtnHistory.Name" xml:space="preserve">
+    <value>PBtnHistory</value>
+  </data>
+  <data name="&gt;&gt;PBtnHistory.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmAppointments</value>

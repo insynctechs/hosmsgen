@@ -36,7 +36,7 @@
             this.menuItemStaffType = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemProcType = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemMedType = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemUserRoles = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemUserRole = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemOpt = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemStaffs = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemDocs = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,6 +68,8 @@
             this.lnkChangePwd = new System.Windows.Forms.LinkLabel();
             this.linkLogout = new System.Windows.Forms.LinkLabel();
             this.btnChildClose = new System.Windows.Forms.Button();
+            this.menuItemInves = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemInvesType = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -97,11 +99,13 @@
             this.menuItemMain.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemDept,
             this.menuItemProc,
+            this.menuItemInves,
             this.menuItemMedicine,
             this.menuItemStaffType,
             this.menuItemProcType,
+            this.menuItemInvesType,
             this.menuItemMedType,
-            this.menuItemUserRoles,
+            this.menuItemUserRole,
             this.menuItemOpt});
             this.menuItemMain.Name = "menuItemMain";
             this.menuItemMain.Size = new System.Drawing.Size(51, 22);
@@ -110,56 +114,56 @@
             // menuItemDept
             // 
             this.menuItemDept.Name = "menuItemDept";
-            this.menuItemDept.Size = new System.Drawing.Size(180, 22);
+            this.menuItemDept.Size = new System.Drawing.Size(193, 22);
             this.menuItemDept.Text = "Departments";
             this.menuItemDept.Click += new System.EventHandler(this.menuItemDept_Click);
             // 
             // menuItemProc
             // 
             this.menuItemProc.Name = "menuItemProc";
-            this.menuItemProc.Size = new System.Drawing.Size(180, 22);
+            this.menuItemProc.Size = new System.Drawing.Size(193, 22);
             this.menuItemProc.Text = "Procedures";
             this.menuItemProc.Click += new System.EventHandler(this.menuItemProc_Click);
             // 
             // menuItemMedicine
             // 
             this.menuItemMedicine.Name = "menuItemMedicine";
-            this.menuItemMedicine.Size = new System.Drawing.Size(180, 22);
+            this.menuItemMedicine.Size = new System.Drawing.Size(193, 22);
             this.menuItemMedicine.Text = "Medicines";
             this.menuItemMedicine.Click += new System.EventHandler(this.menuItemMedicine_Click);
             // 
             // menuItemStaffType
             // 
             this.menuItemStaffType.Name = "menuItemStaffType";
-            this.menuItemStaffType.Size = new System.Drawing.Size(180, 22);
+            this.menuItemStaffType.Size = new System.Drawing.Size(193, 22);
             this.menuItemStaffType.Text = "Staff Types";
             this.menuItemStaffType.Click += new System.EventHandler(this.menuItemStaffType_Click);
             // 
             // menuItemProcType
             // 
             this.menuItemProcType.Name = "menuItemProcType";
-            this.menuItemProcType.Size = new System.Drawing.Size(180, 22);
+            this.menuItemProcType.Size = new System.Drawing.Size(193, 22);
             this.menuItemProcType.Text = "Procedure Types";
             this.menuItemProcType.Click += new System.EventHandler(this.menuItemProcType_Click);
             // 
             // menuItemMedType
             // 
             this.menuItemMedType.Name = "menuItemMedType";
-            this.menuItemMedType.Size = new System.Drawing.Size(180, 22);
+            this.menuItemMedType.Size = new System.Drawing.Size(193, 22);
             this.menuItemMedType.Text = "Medicine Types";
             this.menuItemMedType.Click += new System.EventHandler(this.menuItemMedType_Click);
             // 
-            // menuItemUserRoles
+            // menuItemUserRole
             // 
-            this.menuItemUserRoles.Name = "menuItemUserRoles";
-            this.menuItemUserRoles.Size = new System.Drawing.Size(180, 22);
-            this.menuItemUserRoles.Text = "User Roles";
-            this.menuItemUserRoles.Click += new System.EventHandler(this.menuItemUserRoles_Click);
+            this.menuItemUserRole.Name = "menuItemUserRole";
+            this.menuItemUserRole.Size = new System.Drawing.Size(193, 22);
+            this.menuItemUserRole.Text = "User Roles";
+            this.menuItemUserRole.Click += new System.EventHandler(this.menuItemUserRoles_Click);
             // 
             // menuItemOpt
             // 
             this.menuItemOpt.Name = "menuItemOpt";
-            this.menuItemOpt.Size = new System.Drawing.Size(180, 22);
+            this.menuItemOpt.Size = new System.Drawing.Size(193, 22);
             this.menuItemOpt.Text = "Options";
             this.menuItemOpt.Click += new System.EventHandler(this.menuItemOpt_Click);
             // 
@@ -322,7 +326,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.09406F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.90594F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 221F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lblAppName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tblLoginPanel, 2, 0);
@@ -340,10 +344,10 @@
             this.flowLayoutPanel1.Controls.Add(this.btnDashboard);
             this.flowLayoutPanel1.Controls.Add(this.btnApp);
             this.flowLayoutPanel1.Controls.Add(this.btnReg);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(224, 20);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(223, 20);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(559, 73);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(558, 73);
             this.flowLayoutPanel1.TabIndex = 7;
             // 
             // btnDashboard
@@ -413,7 +417,7 @@
             this.tblLoginPanel.Controls.Add(this.lnkChangePwd);
             this.tblLoginPanel.Controls.Add(this.linkLogout);
             this.tblLoginPanel.Controls.Add(this.btnChildClose);
-            this.tblLoginPanel.Location = new System.Drawing.Point(789, 3);
+            this.tblLoginPanel.Location = new System.Drawing.Point(787, 3);
             this.tblLoginPanel.Name = "tblLoginPanel";
             this.tblLoginPanel.Size = new System.Drawing.Size(196, 131);
             this.tblLoginPanel.TabIndex = 8;
@@ -491,6 +495,20 @@
             this.btnChildClose.Visible = false;
             this.btnChildClose.Click += new System.EventHandler(this.btnChildClose_Click);
             // 
+            // menuItemInves
+            // 
+            this.menuItemInves.Name = "menuItemInves";
+            this.menuItemInves.Size = new System.Drawing.Size(193, 22);
+            this.menuItemInves.Text = "Investigations";
+            this.menuItemInves.Click += new System.EventHandler(this.menuItemInves_Click);
+            // 
+            // menuItemInvesType
+            // 
+            this.menuItemInvesType.Name = "menuItemInvesType";
+            this.menuItemInvesType.Size = new System.Drawing.Size(193, 22);
+            this.menuItemInvesType.Text = "Investigation Types";
+            this.menuItemInvesType.Click += new System.EventHandler(this.menuItemInvesType_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,7 +564,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuItemReg;
         private System.Windows.Forms.ToolStripMenuItem menuItemPatSearch;
         private System.Windows.Forms.ToolStripMenuItem menuItemProc;
-        private System.Windows.Forms.ToolStripMenuItem menuItemUserRoles;
+        private System.Windows.Forms.ToolStripMenuItem menuItemUserRole;
         private System.Windows.Forms.ToolStripMenuItem menuItemDept;
         private System.Windows.Forms.ToolStripMenuItem menuItemOpt;
         private System.Windows.Forms.Label lblEmpID;
@@ -568,5 +586,7 @@
         private System.Windows.Forms.ToolStripMenuItem miServerDetails;
         private System.Windows.Forms.ToolStripMenuItem menuItemMedicine;
         private System.Windows.Forms.ToolStripMenuItem menuItemMedType;
+        private System.Windows.Forms.ToolStripMenuItem menuItemInves;
+        private System.Windows.Forms.ToolStripMenuItem menuItemInvesType;
     }
 }

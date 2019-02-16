@@ -32,6 +32,14 @@ namespace HospitalERP
             patient_id = pat_id;
         }
 
+        public frmReferToDoctor(int pat_id)
+        {
+            InitializeComponent();
+            patient_id = pat_id;
+            appointment_id = 0;
+            this.Text = "Schedule Appointment";
+        }
+
         private void frmReferToDoctor_Shown(object sender, EventArgs e)
         {
             //we need to pick all active doctors other than referring doctor
@@ -47,7 +55,13 @@ namespace HospitalERP
             {
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                    int ret = app.ReferAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]),doctor_id,appointment_id);
+                    int ret = -1;
+                    if(appointment_id==0)
+                        ret = app.addAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]));
+                    else
+                        ret = app.ReferAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]),doctor_id,appointment_id);
+
+                    
                     if (ret >= 1)
                     {
                         /* SJ commented generating bill on 13Nov2018

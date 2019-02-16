@@ -28,16 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedicinePrint));
             this.panelContent = new System.Windows.Forms.Panel();
+            this.lblMedicine = new System.Windows.Forms.Label();
             this.lblDoctor = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvMedicine = new System.Windows.Forms.DataGridView();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.med_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.med_prescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMedId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblGender = new System.Windows.Forms.Label();
             this.lblRegNo = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
@@ -52,12 +58,8 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.chkLetterHead = new System.Windows.Forms.CheckBox();
-            this.lblMedicine = new System.Windows.Forms.Label();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.med_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.med_prescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMedId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedicine)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +67,8 @@
             // panelContent
             // 
             this.panelContent.BackColor = System.Drawing.Color.White;
+            this.panelContent.Controls.Add(this.lblAge);
+            this.panelContent.Controls.Add(this.label7);
             this.panelContent.Controls.Add(this.lblMedicine);
             this.panelContent.Controls.Add(this.lblDoctor);
             this.panelContent.Controls.Add(this.label9);
@@ -83,6 +87,16 @@
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(707, 486);
             this.panelContent.TabIndex = 13;
+            // 
+            // lblMedicine
+            // 
+            this.lblMedicine.AutoSize = true;
+            this.lblMedicine.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedicine.Location = new System.Drawing.Point(25, 220);
+            this.lblMedicine.Name = "lblMedicine";
+            this.lblMedicine.Size = new System.Drawing.Size(285, 19);
+            this.lblMedicine.TabIndex = 39;
+            this.lblMedicine.Text = "Medicine  Medicine  Medicine  Medicine";
             // 
             // lblDoctor
             // 
@@ -131,25 +145,25 @@
             // 
             this.dgvMedicine.AllowUserToAddRows = false;
             this.dgvMedicine.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvMedicine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvMedicine.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMedicine.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMedicine.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvMedicine.BackgroundColor = System.Drawing.Color.White;
             this.dgvMedicine.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMedicine.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dgvMedicine.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.LightCyan;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkCyan;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMedicine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightCyan;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkCyan;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMedicine.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMedicine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedicine.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
@@ -157,14 +171,14 @@
             this.dataGridViewTextBoxColumn4,
             this.med_prescription,
             this.colMedId});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.MintCream;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMedicine.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MintCream;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMedicine.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMedicine.GridColor = System.Drawing.Color.LightCyan;
             this.dgvMedicine.Location = new System.Drawing.Point(9, 340);
             this.dgvMedicine.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
@@ -174,6 +188,44 @@
             this.dgvMedicine.Size = new System.Drawing.Size(617, 133);
             this.dgvMedicine.TabIndex = 43;
             this.dgvMedicine.Visible = false;
+            // 
+            // colID
+            // 
+            this.colID.DataPropertyName = "id";
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // med_name
+            // 
+            this.med_name.DataPropertyName = "medicine_name";
+            this.med_name.HeaderText = "Medicine Name";
+            this.med_name.Name = "med_name";
+            this.med_name.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "medicine_type";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Medicine Type";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // med_prescription
+            // 
+            this.med_prescription.DataPropertyName = "prescription";
+            this.med_prescription.HeaderText = "Prescription";
+            this.med_prescription.Name = "med_prescription";
+            this.med_prescription.ReadOnly = true;
+            // 
+            // colMedId
+            // 
+            this.colMedId.DataPropertyName = "medicine_id";
+            this.colMedId.HeaderText = "medicine_id";
+            this.colMedId.Name = "colMedId";
+            this.colMedId.ReadOnly = true;
+            this.colMedId.Visible = false;
             // 
             // lblGender
             // 
@@ -319,53 +371,27 @@
             this.chkLetterHead.Text = "Letterhead Print";
             this.chkLetterHead.UseVisualStyleBackColor = true;
             // 
-            // lblMedicine
+            // lblAge
             // 
-            this.lblMedicine.AutoSize = true;
-            this.lblMedicine.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMedicine.Location = new System.Drawing.Point(25, 220);
-            this.lblMedicine.Name = "lblMedicine";
-            this.lblMedicine.Size = new System.Drawing.Size(285, 19);
-            this.lblMedicine.TabIndex = 39;
-            this.lblMedicine.Text = "Medicine  Medicine  Medicine  Medicine";
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAge.ForeColor = System.Drawing.Color.Black;
+            this.lblAge.Location = new System.Drawing.Point(480, 155);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(34, 19);
+            this.lblAge.TabIndex = 49;
+            this.lblAge.Text = "Age";
             // 
-            // colID
+            // label7
             // 
-            this.colID.DataPropertyName = "id";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // med_name
-            // 
-            this.med_name.DataPropertyName = "medicine_name";
-            this.med_name.HeaderText = "Medicine Name";
-            this.med_name.Name = "med_name";
-            this.med_name.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "medicine_type";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Medicine Type";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // med_prescription
-            // 
-            this.med_prescription.DataPropertyName = "prescription";
-            this.med_prescription.HeaderText = "Prescription";
-            this.med_prescription.Name = "med_prescription";
-            this.med_prescription.ReadOnly = true;
-            // 
-            // colMedId
-            // 
-            this.colMedId.DataPropertyName = "medicine_id";
-            this.colMedId.HeaderText = "medicine_id";
-            this.colMedId.Name = "colMedId";
-            this.colMedId.ReadOnly = true;
-            this.colMedId.Visible = false;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(329, 155);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 19);
+            this.label7.TabIndex = 48;
+            this.label7.Text = "Age:";
             // 
             // frmMedicinePrint
             // 
@@ -414,5 +440,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn med_prescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMedId;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label label7;
     }
 }

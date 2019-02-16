@@ -55,6 +55,7 @@ namespace HospitalERP
                 this.WindowState = FormWindowState.Maximized;
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
                 dgvProc.AutoGenerateColumns = false;
+                dgvInv.AutoGenerateColumns = false;
                 dgvApptHistory.AutoGenerateColumns = false;
                 dgvHistoryProcedures.AutoGenerateColumns = false;
                 dgvMedicine.AutoGenerateColumns = false;
@@ -72,6 +73,19 @@ namespace HospitalERP
             try
             {
                 dgvProc.DataSource = objCD.getProceduresFromApptID(Convert.ToInt32(txtAppID.Text));
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void getInvestigationList()
+        {
+            try
+            {
+                dgvInv.DataSource = objCD.getInvestigationsFromApptID(Convert.ToInt32(txtAppID.Text));
             }
             catch (Exception ex)
             {
@@ -146,6 +160,7 @@ namespace HospitalERP
                 txtDues.Text = dt.Rows[0]["dues"].ToString();
                 txtMedicalNotes.Text = dt.Rows[0]["history"].ToString();
                 txtAllergies.Text = dt.Rows[0]["allergies"].ToString();
+                txtDischarge.Text = dt.Rows[0]["discharge_summary"].ToString();
                 txtApptNotes.Text = dt.Rows[0]["notes"].ToString();
                 txtDoctor.Text = Utils.FormatDoctorName(dt.Rows[0]["doctor_name"].ToString());
                 txtDoctorID.Text = dt.Rows[0]["doctor_id"].ToString();
@@ -170,29 +185,32 @@ namespace HospitalERP
         {
             try
             {
-                btnSave.Enabled = val;
-                btnSaveProcedure.Enabled = val;
-                btnAddNew.Enabled = val;
-                cmbAppStatus.Enabled = val;
-                btnSaveMedicine.Enabled = val;
-                //btnPrint.Enabled = val;
-                btnAddMed.Enabled = val;
-                colBtnEdit.Visible = val;
-                colDel.Visible = val;
-                btnProcEdit.Visible = val;
-                btnProcDelete.Visible = val;
-
-                if (LoggedUser.staff_type == "Doctor")
+                if (LoggedUser.type_id != 1 && LoggedUser.type_id != 2)
                 {
-                    btnSave.Enabled = true;
-                    btnSaveMedicine.Enabled = true;
+                    btnSave.Enabled = val;
+                    btnSaveProcedure.Enabled = val;
+                    btnAddNew.Enabled = val;
+                    cmbAppStatus.Enabled = val;
+                    btnSaveMedicine.Enabled = val;
                     //btnPrint.Enabled = val;
-                    btnAddMed.Enabled = true;
-                    colBtnEdit.Visible = true;
-                    colDel.Visible = true;
+                    btnAddMed.Enabled = val;
+                    colBtnEdit.Visible = val;
+                    colDel.Visible = val;
+                    btnProcEdit.Visible = val;
+                    btnProcDelete.Visible = val;
 
-                    if (val == false)
-                        cmbAppStatus.Enabled = false;
+                    if (LoggedUser.staff_type == "Doctor")
+                    {
+                        btnSave.Enabled = true;
+                        btnSaveMedicine.Enabled = true;
+                        //btnPrint.Enabled = val;
+                        btnAddMed.Enabled = true;
+                        colBtnEdit.Visible = true;
+                        colDel.Visible = true;
+
+                        if (val == false)
+                            cmbAppStatus.Enabled = false;
+                    }
                 }
                 if (cmbAppStatus.SelectedValue.ToString() == "7") //cancel
                 {
@@ -276,6 +294,22 @@ namespace HospitalERP
             }
         }
 
+        private void clearFormInvFields()
+        {
+            try
+            {
+                txtAppInvId.Text = "";
+                txtInvFee.Text = "";
+                cmbInvestigation.SelectedValue = 0;
+                cmbInvStatus.SelectedValue = 0;
+                txtInvNotes.Text = "";
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
         private void clearMedFormFields()
         {
             try
@@ -332,7 +366,7 @@ namespace HospitalERP
             {
                 //to save medical notes and known allergies in patient table and
                 //to save appointment notes in appointment table
-                int rtn = objCD.saveDiagnosis(Int32.Parse(txtAppID.Text.Trim()), Int32.Parse(txtPatientID.Text.Trim()), txtMedicalNotes.Text.Trim(), txtAllergies.Text.Trim(), txtApptNotes.Text.Trim(), Convert.ToInt16(cmbAppStatus.SelectedValue));
+                int rtn = objCD.saveDiagnosis(Int32.Parse(txtAppID.Text.Trim()), Int32.Parse(txtPatientID.Text.Trim()), txtMedicalNotes.Text.Trim(), txtAllergies.Text.Trim(), txtApptNotes.Text.Trim(), Convert.ToInt16(cmbAppStatus.SelectedValue), txtDischarge.Text.Trim());
 
                 if (rtn == 1)
                 {
@@ -523,6 +557,15 @@ namespace HospitalERP
                         break;
 
                     case 2:
+                        cmbInvestigation.DataSource = objCD.InvestigationsCombo(0);
+                        cmbInvestigation.DisplayMember = "name";
+                        cmbInvestigation.ValueMember = "id";
+                        cmbInvStatus.DataSource = objCD.InvStatusCombo(0);
+                        getInvestigationList();
+                        break;
+
+
+                    case 3:
                         
                         DataTable dtMed = objMed.MedicinesCombo(0);
                         if (dtMed.Rows.Count > 0)
@@ -534,7 +577,7 @@ namespace HospitalERP
                         }
                         break;
                         
-                    case 3:
+                    case 4:
                         dgvHistoryProcedures.AutoGenerateColumns = false;
                         setGridViews();
                         break;
@@ -747,7 +790,7 @@ namespace HospitalERP
         {
             try
             {
-                if (cmbMedicine.SelectedIndex == 0 && tabConsult.SelectedIndex == 2)
+                if (cmbMedicine.SelectedIndex == 0 && tabConsult.SelectedIndex == 3)
                 {
                     e.Cancel = true;
                     //cmbProcType.Focus();
@@ -770,7 +813,7 @@ namespace HospitalERP
         {
             try
             {
-                if (txtPrescription.Text.Trim()=="" && tabConsult.SelectedIndex==2)
+                if (txtPrescription.Text.Trim()=="" && tabConsult.SelectedIndex==3)
                 {
                     e.Cancel = true;
                     //cmbProcType.Focus();
@@ -839,6 +882,17 @@ namespace HospitalERP
             }
         }
 
+        private void DeletePatientInvestigation(int pat_proc_id)
+        {
+            try
+            {
+                int ret = objCD.DeletePatientInvestigation(pat_proc_id);
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
         private void btnPrint_Click(object sender, EventArgs e)
         {
             try
@@ -942,6 +996,198 @@ namespace HospitalERP
             catch (Exception ex)
             {
                 CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cmbInvestigation_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (cmbInvestigation.SelectedIndex == 0 && tabConsult.SelectedIndex == 2)
+                {
+                    e.Cancel = true;
+                    //cmbProcType.Focus();
+                    errorProvider.SetError(cmbInvestigation, "Required");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider.SetError(cmbInvestigation, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void cmbInvestigation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtAppInvId.Text == "") //load fees from investigation table
+                {
+                    txtInvFee.Text = objCD.getInvestigationFees(Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void btnInvClick_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    int rtn = -1;
+                    if (txtAppInvId.Text.Trim() == "") //add data
+                    {
+                        rtn = objCD.addInvestigations(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
+                        if (rtn == -1)
+                        {
+                            ShowStatus(0, "Some error occurred... Record cannot be added!");
+                        }
+                        else if (rtn == 0)
+                            ShowStatus(0, "Name must be unique!");
+                        else if (rtn == 1)
+                        {
+
+                            ShowStatus(1, "Record succesfully added!");
+                            clearFormInvFields();
+                            getInvestigationList();
+                        }
+                    }
+                    else //edit record
+                    {
+                        rtn = objCD.editInvestigations(Convert.ToInt32(txtAppInvId.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
+                        if (rtn == 0)
+                            ShowStatus(0, "This name already exists. Please provide unique name!");
+                        else if (rtn == 1)
+                        {
+                            ShowStatus(1, "Record succesfully updated!");
+                            clearFormInvFields();
+                            getInvestigationList();
+                        }
+                        else if (rtn == -1)
+                        {
+                            ShowStatus(0, "Some error occurred... Record cannot be added!");
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void btnInvAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmInvestigations fp = new frmInvestigations(600, 500);
+                //fp.MdiParent = this.MdiParent;
+                fp.ShowDialog(this);
+                cmbInvestigation.DataSource = objCD.InvestigationsCombo(0);
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void txtInvFee_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                decimal d;
+                if (tabConsult.SelectedIndex == 2)
+                {
+                    if (string.IsNullOrEmpty(txtInvFee.Text))
+                    {
+                        e.Cancel = true;
+                        //txtFee.Focus();
+                        errorProvider.SetError(txtInvFee, "Required");
+                    }
+                    else if (!decimal.TryParse(txtInvFee.Text, out d))
+                    {
+                        e.Cancel = true;
+                        //txtFee.Focus();
+                        errorProvider.SetError(txtInvFee, "Invalid Decimal Number");
+                    }
+                    else
+                    {
+                        e.Cancel = false;
+                        errorProvider.SetError(txtInvFee, null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void cmbInvStatus_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (cmbInvStatus.SelectedIndex == 0 && tabConsult.SelectedIndex == 2)
+                {
+                    e.Cancel = true;
+                    //cmbProcType.Focus();
+                    errorProvider.SetError(cmbInvStatus, "Required");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    errorProvider.SetError(cmbInvStatus, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void dgvInv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                switch (dgvInv.Columns[e.ColumnIndex].Name)
+                {
+                    case "btnInvEdit":
+                        txtAppInvId.Text = dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString();
+                        DataTable dt = objCD.getInvestigationsFromInvID(Convert.ToInt32(txtAppInvId.Text));
+                        txtInvFee.Text = dt.Rows[0]["fee"].ToString();
+                        cmbInvestigation.SelectedValue = dt.Rows[0]["investigation_id"].ToString();
+                        cmbInvStatus.SelectedValue = dt.Rows[0]["status"].ToString();
+                        txtInvNotes.Text = dt.Rows[0]["notes"].ToString();
+                        break;
+
+                    case "btnInvDelete":
+                        DeletePatientInvestigation(Int32.Parse(dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString()));
+                        getInvestigationList();
+                        break;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info("frmConsultationDetails\r\n" + ex.ToString());
             }
         }
     }

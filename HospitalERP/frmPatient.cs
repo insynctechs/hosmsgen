@@ -66,6 +66,11 @@ namespace HospitalERP
                                 clearFormFields();
                                 if (chkAppointment.Checked == true)
                                 {
+                                    frmReferToDoctor frt = new frmReferToDoctor(rtn);
+                                    frt.ShowDialog(this);
+                                    /*
+                                     * SJ COMMENTED ON 12FEB2019
+                                     * Instead of redirecting to appt form, 
                                     if (LoggedUser.type_name.ToUpper() == "DOCTOR")
                                     {
                                         if (Application.OpenForms.OfType<frmConsultations>().Count() == 1)
@@ -89,7 +94,7 @@ namespace HospitalERP
                                             app.Show();
                                         }
                                     }
-                                    
+                                    */
                                 }
 
                             }

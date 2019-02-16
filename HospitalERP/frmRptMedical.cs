@@ -79,7 +79,7 @@ namespace HospitalERP
                 lblDate.Text = Utils.FormatDateShort(dt.Rows[0]["appointment_date"].ToString());
                 lblAddress.Text = dt.Rows[0]["address"].ToString();
                 lblNationality.Text = dt.Rows[0]["nationality"].ToString();
-                lblDescription.Text = dt.Rows[0]["notes"].ToString();
+                lblDescription.Text = dt.Rows[0]["discharge_summary"].ToString();
                 lblDoctor.Text = dt.Rows[0]["doctor_name"].ToString();
                 string proc = "";
                 for (int r = 0; r < dtProc.Rows.Count; r++)
