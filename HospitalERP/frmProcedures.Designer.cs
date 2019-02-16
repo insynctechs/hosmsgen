@@ -219,11 +219,12 @@
             // 
             // txtDesc
             // 
+            this.txtDesc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDesc.Location = new System.Drawing.Point(285, 199);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDesc.Size = new System.Drawing.Size(250, 87);
+            this.txtDesc.Size = new System.Drawing.Size(594, 87);
             this.txtDesc.TabIndex = 4;
             // 
             // chkActive
