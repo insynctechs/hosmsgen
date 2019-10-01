@@ -66,26 +66,29 @@
             this.reportViewer.LocalReport.ReportEmbeddedResource = "HospitalERP.ReportBilling.rdlc";
             this.reportViewer.LocalReport.ReportPath = "";
             this.reportViewer.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reportViewer.Name = "reportViewer";
             this.reportViewer.ServerReport.BearerToken = null;
-            this.reportViewer.Size = new System.Drawing.Size(947, 381);
+            this.reportViewer.Size = new System.Drawing.Size(1263, 469);
             this.reportViewer.TabIndex = 0;
             // 
             // dtFromDate
             // 
             this.dtFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFromDate.Location = new System.Drawing.Point(13, 16);
+            this.dtFromDate.Location = new System.Drawing.Point(17, 20);
+            this.dtFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtFromDate.Name = "dtFromDate";
-            this.dtFromDate.Size = new System.Drawing.Size(114, 20);
+            this.dtFromDate.Size = new System.Drawing.Size(151, 22);
             this.dtFromDate.TabIndex = 1;
             this.dtFromDate.Value = new System.DateTime(2018, 2, 5, 0, 0, 0, 0);
             // 
             // dtToDate
             // 
             this.dtToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtToDate.Location = new System.Drawing.Point(138, 15);
+            this.dtToDate.Location = new System.Drawing.Point(184, 18);
+            this.dtToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtToDate.Name = "dtToDate";
-            this.dtToDate.Size = new System.Drawing.Size(118, 20);
+            this.dtToDate.Size = new System.Drawing.Size(156, 22);
             this.dtToDate.TabIndex = 2;
             // 
             // btnReport
@@ -94,9 +97,10 @@
             this.btnReport.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btnReport.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.Location = new System.Drawing.Point(700, 13);
+            this.btnReport.Location = new System.Drawing.Point(933, 16);
+            this.btnReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(71, 25);
+            this.btnReport.Size = new System.Drawing.Size(95, 31);
             this.btnReport.TabIndex = 3;
             this.btnReport.Text = "GO";
             this.btnReport.UseVisualStyleBackColor = false;
@@ -115,46 +119,51 @@
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(947, 45);
+            this.panel1.Size = new System.Drawing.Size(1263, 55);
             this.panel1.TabIndex = 4;
             // 
             // cmbType
             // 
             this.cmbType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(401, 14);
+            this.cmbType.Location = new System.Drawing.Point(535, 17);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(121, 21);
+            this.cmbType.Size = new System.Drawing.Size(160, 24);
             this.cmbType.TabIndex = 5;
             // 
             // cmbStatus
             // 
             this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(267, 15);
+            this.cmbStatus.Location = new System.Drawing.Point(356, 18);
+            this.cmbStatus.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbStatus.Size = new System.Drawing.Size(160, 24);
             this.cmbStatus.TabIndex = 4;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.reportViewer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 45);
+            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(947, 381);
+            this.panel2.Size = new System.Drawing.Size(1263, 469);
             this.panel2.TabIndex = 5;
             // 
             // frmRptBilling
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(947, 426);
+            this.ClientSize = new System.Drawing.Size(1263, 524);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmRptBilling";
@@ -163,6 +172,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmRptBilling_FormClosed);
             this.Load += new System.EventHandler(this.frmRptBilling_Load);
             this.Shown += new System.EventHandler(this.frmRptBilling_Shown);
+            this.Enter += new System.EventHandler(this.frmRptBilling_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.uspReport_BillingBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetBilling)).EndInit();
             this.panel1.ResumeLayout(false);

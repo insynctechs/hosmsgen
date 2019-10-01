@@ -20,6 +20,7 @@ namespace HospitalERP
         {
             try
             {
+                this.WindowState = FormWindowState.Maximized;
                 PopulateStatusCombo();
                 PopulateTypesCombo();
                 this.uspReport_BillingTableAdapter.Connection.Close();
@@ -127,6 +128,11 @@ namespace HospitalERP
             opt.Dispose();
             bill.Dispose();
 
+        }
+
+        private void frmRptBilling_Enter(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

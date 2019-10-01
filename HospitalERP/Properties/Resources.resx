@@ -190,4 +190,16 @@
   <data name="medicine_types" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\medicine-types.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="investigations" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\investigations.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="investigation_type" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\investigation-type.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="surgery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\surgery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="surgery_types" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\surgery_types.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

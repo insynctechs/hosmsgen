@@ -461,8 +461,10 @@ namespace HospitalERP
                     tabSub.TabPages.Remove(tabPgList);
                 }
                 dgvList.AutoGenerateColumns = false;
+                /*
                 this.MaximizeBox = false;
                 this.MinimizeBox = false;
+                */
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             }
             catch (Exception ex)

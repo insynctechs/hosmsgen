@@ -38,9 +38,12 @@ namespace HospitalERP
                     tabSub.TabPages.Remove(tabPgList);
                 }
                 dgvList.AutoGenerateColumns = false;
+                /*
                 this.MaximizeBox = false;
                 this.MinimizeBox = false;
+                */
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+                
             }
             catch (Exception ex)
             {
@@ -366,6 +369,10 @@ namespace HospitalERP
                         setFormFields(e.RowIndex);
                         tabSub.SelectedIndex = 0;
                         break;
+
+                    case "colBtnDel":
+                        deleteProcedure(Int32.Parse(dgvList.Rows[e.RowIndex].Cells["colID"].Value.ToString()));
+                        break;
                 }
             }
             catch (Exception ex)
@@ -373,6 +380,34 @@ namespace HospitalERP
                 CommonLogger.Info(ex.ToString());
             }
 
+        }
+
+        private void deleteProcedure(int id)
+        {
+
+            try
+            {
+                int rtn = procTest.DeleteProcedure(id);
+
+                if (rtn > -1)
+                {
+                    //ShowStatus(1, "Record succesfully deleted");
+                    MessageBox.Show("Record succesfully deleted");
+
+
+                }
+                else if (rtn == -1)
+                {
+                    //ShowStatus(0, "This patient associated to appointments... Record cannot delete.");
+                    MessageBox.Show("This patient associated to appointments... Record cannot delete.");
+                }
+                ShowProcedureTests();
+
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
         }
 
         private void dgvList_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

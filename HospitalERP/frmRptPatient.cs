@@ -11,6 +11,7 @@ namespace HospitalERP
         Patients pat = new Patients();
         OptionVals opt = new OptionVals();
 
+
         public frmRptPatient()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace HospitalERP
         {
             // TODO: This line of code loads data into the 'DataSetPatient.uspReport_Patient' table. You can move, or remove it, as needed.
             //this.uspReport_PatientTableAdapter.Fill(this.DataSetPatient.uspReport_Patient);
+            
             try
             {
                 this.reportViewer.RefreshReport();
@@ -84,7 +86,7 @@ namespace HospitalERP
         }
 
         private void frmRptPatient_Shown(object sender, EventArgs e)
-        {
+        {            
             populateReport();
         }
 
@@ -94,5 +96,11 @@ namespace HospitalERP
             pat.Dispose();
             opt.Dispose();
         }
+
+        private void frmRptPatient_Enter(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
     }
 }

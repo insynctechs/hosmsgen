@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -59,7 +59,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>logo_n2x_icon.ico</ApplicationIcon>
@@ -122,6 +122,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSetPatient.cs">
+      <DependentUpon>DataSetPatient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetPatientSql.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPatientSql.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetProcedure.cs">
+      <DependentUpon>DataSetProcedure.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetProcedure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetProcedure.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +231,18 @@
     </Compile>
     <Compile Include="frmDoctors.Designer.cs">
       <DependentUpon>frmDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvestigations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvestigations.Designer.cs">
+      <DependentUpon>frmInvestigations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvestigationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvestigationTypes.Designer.cs">
+      <DependentUpon>frmInvestigationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLicense.cs">
       <SubType>Form</SubType>
@@ -324,6 +352,12 @@
     <Compile Include="frmRptPatient.Designer.cs">
       <DependentUpon>frmRptPatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRptProcedure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRptProcedure.Designer.cs">
+      <DependentUpon>frmRptProcedure.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRptSickLeave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +393,8 @@
     <Compile Include="Procedures\ConsultationDetails.cs" />
     <Compile Include="Procedures\Departments.cs" />
     <Compile Include="Procedures\Doctors.cs" />
+    <Compile Include="Procedures\Investigations.cs" />
+    <Compile Include="Procedures\InvestigationTypes.cs" />
     <Compile Include="Procedures\LoggedUser.cs" />
     <Compile Include="Procedures\Medicines.cs" />
     <Compile Include="Procedures\MedicineTypes.cs" />
@@ -422,6 +458,12 @@
     <EmbeddedResource Include="frmDoctors.resx">
       <DependentUpon>frmDoctors.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmInvestigations.resx">
+      <DependentUpon>frmInvestigations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvestigationTypes.resx">
+      <DependentUpon>frmInvestigationTypes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLicense.resx">
       <DependentUpon>frmLicense.cs</DependentUpon>
     </EmbeddedResource>
@@ -477,6 +519,9 @@
     <EmbeddedResource Include="frmRptPatient.resx">
       <DependentUpon>frmRptPatient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRptProcedure.resx">
+      <DependentUpon>frmRptProcedure.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmRptSickLeave.resx">
       <DependentUpon>frmRptSickLeave.cs</DependentUpon>
     </EmbeddedResource>
@@ -503,6 +548,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportPatient.rdlc" />
+    <EmbeddedResource Include="ReportProcedure.rdlc" />
     <EmbeddedResource Include="ReportSickLeave.rdlc" />
     <EmbeddedResource Include="TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
@@ -529,6 +575,28 @@
     <None Include="DataSetPatient.xss">
       <DependentUpon>DataSetPatient.xsd</DependentUpon>
     </None>
+    <None Include="DataSetPatientSql.xsc">
+      <DependentUpon>DataSetPatientSql.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetPatientSql.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPatientSql.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetPatientSql.xss">
+      <DependentUpon>DataSetPatientSql.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetProcedure.xsc">
+      <DependentUpon>DataSetProcedure.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetProcedure.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetProcedure.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetProcedure.xss">
+      <DependentUpon>DataSetProcedure.xsd</DependentUpon>
+    </None>
     <None Include="HospitalERP_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -553,9 +621,14 @@
     <EmbeddedResource Include="procedures.txt" />
     <None Include="images\medicines.png" />
     <None Include="images\medicine-types.png" />
+    <EmbeddedResource Include="investigations.jpg" />
+    <None Include="images\surgery.png" />
+    <None Include="images\surgery_types.png" />
     <Content Include="logo_n2x_icon.ico" />
     <Content Include="procedures.sql" />
     <None Include="Resources\medicine.bmp" />
+    <None Include="Resources\investigations.bmp" />
+    <None Include="Resources\investigations.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

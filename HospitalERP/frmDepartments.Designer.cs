@@ -52,11 +52,6 @@
             this.lbName = new System.Windows.Forms.Label();
             this.tabPgList = new System.Windows.Forms.TabPage();
             this.dgvDept = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colBtnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,6 +60,11 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colBtnEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabSub.SuspendLayout();
             this.tabPgAdd.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -84,13 +84,13 @@
             this.tabSub.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabSub.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabSub.Location = new System.Drawing.Point(0, 0);
-            this.tabSub.Margin = new System.Windows.Forms.Padding(30, 10, 30, 10);
+            this.tabSub.Margin = new System.Windows.Forms.Padding(40, 12, 40, 12);
             this.tabSub.Multiline = true;
             this.tabSub.Name = "tabSub";
             this.tabSub.Padding = new System.Drawing.Point(20, 10);
             this.tabSub.SelectedIndex = 0;
             this.tabSub.ShowToolTips = true;
-            this.tabSub.Size = new System.Drawing.Size(1008, 516);
+            this.tabSub.Size = new System.Drawing.Size(1344, 635);
             this.tabSub.TabIndex = 4;
             this.tabSub.SelectedIndexChanged += new System.EventHandler(this.tabSub_SelectedIndexChanged);
             // 
@@ -98,10 +98,11 @@
             // 
             this.tabPgAdd.BackColor = System.Drawing.Color.White;
             this.tabPgAdd.Controls.Add(this.tableLayoutPanel2);
-            this.tabPgAdd.Location = new System.Drawing.Point(4, 45);
+            this.tabPgAdd.Location = new System.Drawing.Point(4, 50);
+            this.tabPgAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgAdd.Name = "tabPgAdd";
-            this.tabPgAdd.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPgAdd.Size = new System.Drawing.Size(1000, 467);
+            this.tabPgAdd.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPgAdd.Size = new System.Drawing.Size(1336, 581);
             this.tabPgAdd.TabIndex = 0;
             this.tabPgAdd.Text = "Add";
             this.tabPgAdd.UseVisualStyleBackColor = true;
@@ -125,12 +126,13 @@
             this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel6, 0, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(25, 3, 25, 15);
+            this.tableLayoutPanel2.Padding = new System.Windows.Forms.Padding(33, 4, 33, 18);
             this.tableLayoutPanel2.RowCount = 22;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -150,8 +152,8 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 461);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1328, 573);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // lblHead1
@@ -163,48 +165,52 @@
             this.tableLayoutPanel2.SetColumnSpan(this.lblHead1, 3);
             this.lblHead1.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHead1.ForeColor = System.Drawing.Color.DimGray;
-            this.lblHead1.Location = new System.Drawing.Point(28, 13);
-            this.lblHead1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.lblHead1.Location = new System.Drawing.Point(37, 16);
+            this.lblHead1.Margin = new System.Windows.Forms.Padding(4, 12, 4, 0);
             this.lblHead1.Name = "lblHead1";
-            this.lblHead1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.lblHead1.Size = new System.Drawing.Size(938, 28);
+            this.lblHead1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.lblHead1.Size = new System.Drawing.Size(1254, 35);
             this.lblHead1.TabIndex = 29;
             this.lblHead1.Text = "DEPARTMENT";
             this.lblHead1.UseWaitCursor = true;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(285, 135);
+            this.txtName.Location = new System.Drawing.Point(381, 167);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(250, 25);
+            this.txtName.Size = new System.Drawing.Size(332, 30);
             this.txtName.TabIndex = 1;
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 164);
+            this.label2.Location = new System.Drawing.Point(37, 203);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 18);
+            this.label2.Size = new System.Drawing.Size(104, 23);
             this.label2.TabIndex = 5;
             this.label2.Text = "Description:";
             // 
             // lblActive
             // 
             this.lblActive.AutoSize = true;
-            this.lblActive.Location = new System.Drawing.Point(28, 257);
+            this.lblActive.Location = new System.Drawing.Point(37, 317);
+            this.lblActive.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblActive.Name = "lblActive";
-            this.lblActive.Size = new System.Drawing.Size(50, 18);
+            this.lblActive.Size = new System.Drawing.Size(63, 23);
             this.lblActive.TabIndex = 4;
             this.lblActive.Text = "Active:";
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(285, 167);
+            this.txtDesc.Location = new System.Drawing.Point(381, 207);
+            this.txtDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDesc.Size = new System.Drawing.Size(563, 87);
+            this.txtDesc.Size = new System.Drawing.Size(749, 106);
             this.txtDesc.TabIndex = 54;
             // 
             // chkActive
@@ -212,9 +218,10 @@
             this.chkActive.AutoSize = true;
             this.chkActive.Checked = true;
             this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActive.Location = new System.Drawing.Point(285, 260);
+            this.chkActive.Location = new System.Drawing.Point(381, 321);
+            this.chkActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkActive.Name = "chkActive";
-            this.chkActive.Size = new System.Drawing.Size(15, 14);
+            this.chkActive.Size = new System.Drawing.Size(18, 17);
             this.chkActive.TabIndex = 55;
             this.chkActive.UseVisualStyleBackColor = true;
             // 
@@ -225,9 +232,10 @@
             this.flowLayoutPanel3.Controls.Add(this.btnClear);
             this.flowLayoutPanel3.Controls.Add(this.btnCancel);
             this.flowLayoutPanel3.Controls.Add(this.txtID);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(285, 280);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(381, 346);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(317, 39);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(423, 48);
             this.flowLayoutPanel3.TabIndex = 57;
             // 
             // btnSave
@@ -236,9 +244,10 @@
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(3, 3);
+            this.btnSave.Location = new System.Drawing.Point(4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 33);
+            this.btnSave.Size = new System.Drawing.Size(100, 41);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -250,9 +259,10 @@
             this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClear.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(84, 3);
+            this.btnClear.Location = new System.Drawing.Point(112, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 33);
+            this.btnClear.Size = new System.Drawing.Size(100, 41);
             this.btnClear.TabIndex = 20;
             this.btnClear.Text = "CLEAR";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -264,10 +274,10 @@
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(182, 3);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
+            this.btnCancel.Location = new System.Drawing.Point(243, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(27, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 33);
+            this.btnCancel.Size = new System.Drawing.Size(100, 41);
             this.btnCancel.TabIndex = 21;
             this.btnCancel.Text = "CLOSE";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -275,9 +285,10 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(263, 3);
+            this.txtID.Location = new System.Drawing.Point(351, 4);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(46, 25);
+            this.txtID.Size = new System.Drawing.Size(60, 30);
             this.txtID.TabIndex = 59;
             this.txtID.Visible = false;
             // 
@@ -289,11 +300,11 @@
             this.tableLayoutPanel2.SetColumnSpan(this.lblStatus, 2);
             this.lblStatus.Font = new System.Drawing.Font("Cambria", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblStatus.Location = new System.Drawing.Point(28, 81);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
+            this.lblStatus.Location = new System.Drawing.Point(37, 101);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 25, 4, 25);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Padding = new System.Windows.Forms.Padding(20, 5, 20, 5);
-            this.lblStatus.Size = new System.Drawing.Size(42, 31);
+            this.lblStatus.Padding = new System.Windows.Forms.Padding(27, 6, 27, 6);
+            this.lblStatus.Size = new System.Drawing.Size(56, 37);
             this.lblStatus.TabIndex = 58;
             this.lblStatus.Visible = false;
             // 
@@ -301,27 +312,30 @@
             // 
             this.flowLayoutPanel6.Controls.Add(this.label6);
             this.flowLayoutPanel6.Controls.Add(this.lbName);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(28, 135);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(37, 167);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(200, 26);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(267, 32);
             this.flowLayoutPanel6.TabIndex = 67;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Location = new System.Drawing.Point(4, 0);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 18);
+            this.label6.Size = new System.Drawing.Size(19, 23);
             this.label6.TabIndex = 0;
             this.label6.Text = "*";
             // 
             // lbName
             // 
             this.lbName.AutoSize = true;
-            this.lbName.Location = new System.Drawing.Point(24, 0);
+            this.lbName.Location = new System.Drawing.Point(31, 0);
+            this.lbName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(49, 18);
+            this.lbName.Size = new System.Drawing.Size(60, 23);
             this.lbName.TabIndex = 62;
             this.lbName.Text = "Name:";
             // 
@@ -331,10 +345,11 @@
             this.tabPgList.Controls.Add(this.dgvDept);
             this.tabPgList.Controls.Add(this.flowLayoutPanel2);
             this.tabPgList.Controls.Add(this.flowLayoutPanel1);
-            this.tabPgList.Location = new System.Drawing.Point(4, 45);
+            this.tabPgList.Location = new System.Drawing.Point(4, 50);
+            this.tabPgList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabPgList.Name = "tabPgList";
-            this.tabPgList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPgList.Size = new System.Drawing.Size(1000, 467);
+            this.tabPgList.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPgList.Size = new System.Drawing.Size(1336, 581);
             this.tabPgList.TabIndex = 1;
             this.tabPgList.Text = "Search/List";
             this.tabPgList.UseVisualStyleBackColor = true;
@@ -378,64 +393,22 @@
             this.dgvDept.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDept.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDept.GridColor = System.Drawing.Color.LightCyan;
-            this.dgvDept.Location = new System.Drawing.Point(3, 83);
-            this.dgvDept.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
+            this.dgvDept.Location = new System.Drawing.Point(4, 102);
+            this.dgvDept.Margin = new System.Windows.Forms.Padding(27, 4, 27, 4);
             this.dgvDept.Name = "dgvDept";
             this.dgvDept.ReadOnly = true;
             this.dgvDept.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDept.Size = new System.Drawing.Size(994, 281);
+            this.dgvDept.Size = new System.Drawing.Size(1328, 352);
             this.dgvDept.TabIndex = 11;
             this.dgvDept.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDept_CellContentClick);
-            // 
-            // colID
-            // 
-            this.colID.DataPropertyName = "id";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // colName
-            // 
-            this.colName.DataPropertyName = "name";
-            this.colName.HeaderText = "Name";
-            this.colName.MinimumWidth = 280;
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colDesc
-            // 
-            this.colDesc.DataPropertyName = "description";
-            this.colDesc.HeaderText = "Description";
-            this.colDesc.MinimumWidth = 500;
-            this.colDesc.Name = "colDesc";
-            this.colDesc.ReadOnly = true;
-            // 
-            // colActive
-            // 
-            this.colActive.DataPropertyName = "active";
-            this.colActive.HeaderText = "Active";
-            this.colActive.MinimumWidth = 50;
-            this.colActive.Name = "colActive";
-            this.colActive.ReadOnly = true;
-            this.colActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colBtnEdit
-            // 
-            this.colBtnEdit.HeaderText = "";
-            this.colBtnEdit.MinimumWidth = 50;
-            this.colBtnEdit.Name = "colBtnEdit";
-            this.colBtnEdit.ReadOnly = true;
-            this.colBtnEdit.Text = "Edit";
-            this.colBtnEdit.UseColumnTextForButtonValue = true;
             // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 364);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(4, 454);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(994, 100);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1328, 123);
             this.flowLayoutPanel2.TabIndex = 11;
             // 
             // flowLayoutPanel1
@@ -446,20 +419,21 @@
             this.flowLayoutPanel1.Controls.Add(this.txtSearch);
             this.flowLayoutPanel1.Controls.Add(this.btnSearch);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 20, 0, 20);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(994, 80);
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(0, 25, 0, 25);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1328, 98);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(30, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(30, 5, 3, 0);
+            this.label1.Location = new System.Drawing.Point(40, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(40, 6, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 23);
+            this.label1.Size = new System.Drawing.Size(79, 29);
             this.label1.TabIndex = 6;
             this.label1.Text = "Search";
             // 
@@ -468,29 +442,30 @@
             this.cmbSearch.BackColor = System.Drawing.Color.LightCyan;
             this.cmbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSearch.FormattingEnabled = true;
-            this.cmbSearch.Location = new System.Drawing.Point(98, 23);
-            this.cmbSearch.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.cmbSearch.Location = new System.Drawing.Point(127, 29);
+            this.cmbSearch.Margin = new System.Windows.Forms.Padding(4, 4, 27, 4);
             this.cmbSearch.Name = "cmbSearch";
-            this.cmbSearch.Size = new System.Drawing.Size(150, 27);
+            this.cmbSearch.Size = new System.Drawing.Size(199, 32);
             this.cmbSearch.TabIndex = 5;
             this.cmbSearch.SelectedIndexChanged += new System.EventHandler(this.cmbSearch_SelectedIndexChanged);
             // 
             // cmbActive
             // 
             this.cmbActive.FormattingEnabled = true;
-            this.cmbActive.Location = new System.Drawing.Point(271, 23);
+            this.cmbActive.Location = new System.Drawing.Point(357, 29);
+            this.cmbActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbActive.Name = "cmbActive";
-            this.cmbActive.Size = new System.Drawing.Size(121, 27);
+            this.cmbActive.Size = new System.Drawing.Size(160, 32);
             this.cmbActive.TabIndex = 9;
             this.cmbActive.Visible = false;
             this.cmbActive.SelectedIndexChanged += new System.EventHandler(this.cmbActive_SelectedIndexChanged);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(398, 23);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.txtSearch.Location = new System.Drawing.Point(525, 29);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 27, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 27);
+            this.txtSearch.Size = new System.Drawing.Size(265, 32);
             this.txtSearch.TabIndex = 7;
             this.txtSearch.Visible = false;
             // 
@@ -498,9 +473,10 @@
             // 
             this.btnSearch.BackColor = System.Drawing.Color.MediumTurquoise;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(621, 23);
+            this.btnSearch.Location = new System.Drawing.Point(821, 29);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(59, 29);
+            this.btnSearch.Size = new System.Drawing.Size(79, 36);
             this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "GO";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -510,14 +486,66 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // colID
+            // 
+            this.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colID.DataPropertyName = "id";
+            this.colID.FillWeight = 5F;
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.DataPropertyName = "name";
+            this.colName.FillWeight = 20F;
+            this.colName.HeaderText = "Name";
+            this.colName.MinimumWidth = 20;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colDesc
+            // 
+            this.colDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colDesc.DataPropertyName = "description";
+            this.colDesc.FillWeight = 40F;
+            this.colDesc.HeaderText = "Description";
+            this.colDesc.MinimumWidth = 40;
+            this.colDesc.Name = "colDesc";
+            this.colDesc.ReadOnly = true;
+            // 
+            // colActive
+            // 
+            this.colActive.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colActive.DataPropertyName = "active";
+            this.colActive.FillWeight = 5F;
+            this.colActive.HeaderText = "Active";
+            this.colActive.Name = "colActive";
+            this.colActive.ReadOnly = true;
+            this.colActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colBtnEdit
+            // 
+            this.colBtnEdit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colBtnEdit.FillWeight = 5F;
+            this.colBtnEdit.HeaderText = "";
+            this.colBtnEdit.Name = "colBtnEdit";
+            this.colBtnEdit.ReadOnly = true;
+            this.colBtnEdit.Text = "Edit";
+            this.colBtnEdit.UseColumnTextForButtonValue = true;
+            // 
             // frmDepartments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 516);
+            this.ClientSize = new System.Drawing.Size(1344, 635);
             this.ControlBox = false;
             this.Controls.Add(this.tabSub);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmDepartments";
@@ -574,11 +602,11 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvDept;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ComboBox cmbActive;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDesc;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colActive;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnEdit;
-        private System.Windows.Forms.ComboBox cmbActive;
     }
 }

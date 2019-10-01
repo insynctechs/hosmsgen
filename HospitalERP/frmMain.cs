@@ -48,6 +48,10 @@ namespace HospitalERP
                     lblEmpID.Text = LoggedUser.name;
                     if (LoggedUser.type_id == 1)
                         lblEmpID.Text = "SUPER ADMIN";
+                    // Hiding User role options for usertype 3, 4
+                    if (LoggedUser.type_id == 3 || LoggedUser.type_id == 4) {
+                        menuItemUserRole.Visible = false;
+                    }
                 }
                 else
                 {
@@ -96,6 +100,7 @@ namespace HospitalERP
                 frmDashboard frm = new frmDashboard();
                 frm.MdiParent = this;
                 frm.Show();
+                frm.WindowState = FormWindowState.Maximized;
             }
             catch(Exception ex)
             {
@@ -115,6 +120,7 @@ namespace HospitalERP
                     frmStaffs frm = new frmStaffs();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -134,6 +140,7 @@ namespace HospitalERP
                     frmDoctors frm = new frmDoctors();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -153,6 +160,7 @@ namespace HospitalERP
                     frmStaffTypes frm = new frmStaffTypes();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -172,6 +180,7 @@ namespace HospitalERP
                     frmDepartments frm = new frmDepartments();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -191,6 +200,7 @@ namespace HospitalERP
                     frmProcedures frm = new frmProcedures();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -210,6 +220,7 @@ namespace HospitalERP
                     frmUserRoles frm = new frmUserRoles();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -229,6 +240,7 @@ namespace HospitalERP
                     frmProcTypes frm = new frmProcTypes();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -248,6 +260,8 @@ namespace HospitalERP
                     frmOptions frm = new frmOptions();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
+
                 }
             }
             catch (Exception ex)
@@ -318,6 +332,7 @@ namespace HospitalERP
                     frmPatient frm = new frmPatient();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -344,6 +359,7 @@ namespace HospitalERP
                         frmConsultations frm = new frmConsultations();
                         frm.MdiParent = this;
                         frm.Show();
+                        frm.WindowState = FormWindowState.Maximized;
                     }
                 }
                 else
@@ -396,6 +412,7 @@ namespace HospitalERP
                     frmPatient frm = new frmPatient(1);
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -436,6 +453,9 @@ namespace HospitalERP
                     frm.MdiParent = this;
                     frm.Show();
                 }
+                // New Implementation - 01-April-2019
+                // To hide ChildClose button on dashboard load.
+                btnChildClose.Visible = false;
             }
             catch (Exception ex)
             {
@@ -450,10 +470,14 @@ namespace HospitalERP
                 //this.ActiveMdiChild.Dispose();
                 this.ActiveMdiChild.Close();
                 int childCount = getChildCount();
-                if (childCount == 0)
+                
+                /* if(childCount==0) */
+                // New Implementation - 01-April-2019 - Checking if active child is of type dashboard.
+                if (this.ActiveMdiChild.GetType()==typeof(frmDashboard) || childCount == 0)
                     btnChildClose.Visible = false;
                 else
                     btnChildClose.Visible = true;
+                
             }
             catch (Exception ex)
             {
@@ -511,17 +535,19 @@ namespace HospitalERP
         
 
         public int getChildCount()
-        {
+        {           
             int childCount = 0;
             try
             {
                 
                 foreach (Form frm in this.MdiChildren)
                 {
+
                     if (frm.GetType() != typeof(frmDashboard) && frm.GetType() != typeof(frmMain) && frm.GetType() != typeof(frmLogin))
                     {
                         childCount++;
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -544,6 +570,7 @@ namespace HospitalERP
                         frmConsultations frm = new frmConsultations();
                         frm.MdiParent = this;
                         frm.Show();
+                        frm.WindowState = FormWindowState.Maximized;
                     }
                 }
                 else
@@ -556,6 +583,7 @@ namespace HospitalERP
                         frmAppointments frm = new frmAppointments();
                         frm.MdiParent = this;
                         frm.Show();
+                        frm.WindowState = FormWindowState.Maximized;
                     }
                 }
             }
@@ -577,6 +605,7 @@ namespace HospitalERP
                     frmPatient frm = new frmPatient();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -598,6 +627,7 @@ namespace HospitalERP
                     frmRptBilling rep = new frmRptBilling();
                     rep.MdiParent = this;
                     rep.Show();
+                    rep.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -619,6 +649,7 @@ namespace HospitalERP
                     frmRptPatient fmPat = new frmRptPatient();
                     fmPat.MdiParent = this;
                     fmPat.Show();
+                    fmPat.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -684,6 +715,7 @@ namespace HospitalERP
                     frmMedicineTypes fdc = new frmMedicineTypes();
                     fdc.MdiParent = this;
                     fdc.Show();
+                    fdc.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -705,6 +737,7 @@ namespace HospitalERP
                     frmMedicine fm = new frmMedicine();
                     fm.MdiParent = this;
                     fm.Show();
+                    fm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -726,6 +759,7 @@ namespace HospitalERP
                     frmInvestigations fdc = new frmInvestigations();
                     fdc.MdiParent = this;
                     fdc.Show();
+                    fdc.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)
@@ -745,6 +779,27 @@ namespace HospitalERP
                     frmInvestigationTypes frm = new frmInvestigationTypes();
                     frm.MdiParent = this;
                     frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void miProcedureReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmRptProcedure>().Count() == 1)
+                    Application.OpenForms.OfType<frmRptProcedure>().First().BringToFront();
+                else
+                {
+                    frmRptProcedure frm = new frmRptProcedure();
+                    frm.MdiParent = this;
+                    frm.Show();
+                    frm.WindowState = FormWindowState.Maximized;
                 }
             }
             catch (Exception ex)

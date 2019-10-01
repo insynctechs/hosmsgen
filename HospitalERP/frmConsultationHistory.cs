@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Data;
 using System.Windows.Forms;
 using HospitalERP.Procedures;
@@ -49,7 +50,9 @@ namespace HospitalERP
             {
                 dgvApptHistory.AutoGenerateColumns = false;
                 dgvHistoryProcedures.AutoGenerateColumns = false;
+                dgvHistoryInvestigations.AutoGenerateColumns = false;
                 setGridViews();
+                IsMdiContainer = true;
             }
             catch (Exception ex)
             {
@@ -63,7 +66,8 @@ namespace HospitalERP
             try
             {                
                 dgvApptHistory.DataSource = objCD.getApptHistory(0,Convert.ToInt32(txtPatientID.Text));                
-                //ShowProceduresHistory(0);
+                ShowProceduresHistory(0);
+                ShowInvestigationsHistory(0);
 
             }
             catch (Exception ex)
@@ -78,8 +82,24 @@ namespace HospitalERP
             {
                 dgvApptHistory.Rows[index].Selected = true;
                 int app_id = Convert.ToInt32(dgvApptHistory.Rows[index].Cells["colHistID"].Value);
-                lblHeadProcHist.Text = "PROCEDURES DONE ON APPT. DATE " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
+                lblHeadProcHist.Text = "PROCEDURES ON " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
                 dgvHistoryProcedures.DataSource = objCD.getProceduresFromApptID(app_id);
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void ShowInvestigationsHistory(int index) {
+
+            try
+            {
+                dgvApptHistory.Rows[index].Selected = true;
+                int app_id = Convert.ToInt32(dgvApptHistory.Rows[index].Cells["colHistID"].Value);
+                lblHeadInvesHist.Text = "INVESTIGATIONS ON " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
+                dgvHistoryInvestigations.DataSource = objCD.getInvestigationsFromApptID(app_id);
             }
             catch (Exception ex)
             {
@@ -137,6 +157,7 @@ namespace HospitalERP
             try
             {
                 ShowProceduresHistory(e.RowIndex);
+                ShowInvestigationsHistory(e.RowIndex);
             }
             catch (Exception ex)
             {
@@ -176,6 +197,7 @@ namespace HospitalERP
                     
                     case 0:
                         dgvHistoryProcedures.AutoGenerateColumns = false;
+                        dgvHistoryInvestigations.AutoGenerateColumns = false;
                         setGridViews();
                         break;
                 }
@@ -195,6 +217,24 @@ namespace HospitalERP
                 {
                     case "btnHistSelect":
                         ShowProceduresHistory(e.RowIndex);
+                        ShowInvestigationsHistory(e.RowIndex);
+                        break;
+                        
+                    case "btnDetails": 
+                        int aptid = Convert.ToInt32(dgvApptHistory.Rows[Convert.ToInt32(e.RowIndex)].Cells["colHistID"].Value);
+                        int patid = Convert.ToInt32(txtPatientID.Text.Trim());
+                        frmConsultationDetails frm = new frmConsultationDetails(aptid, patid);
+                        if (Application.OpenForms.OfType<frmConsultationDetails>().Count() == 1)
+                            Application.OpenForms.OfType<frmConsultationDetails>().First().BringToFront();
+                        else
+                        {
+                            frm.MdiParent = this.Owner;
+                            frm.WindowState = FormWindowState.Normal; // Change to maximized when issue fixed
+                            frm.Show();
+                            frm.BringToFront();
+                        }
+                        this.Close();
+
                         break;
                 }
             }
@@ -242,6 +282,26 @@ namespace HospitalERP
             catch (Exception ex)
             {
                 CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmConsultationHistory_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                frmConsultationDetails frm = new frmConsultationDetails(1, 2);
+                frm.MdiParent = this.Owner;
+                frm.WindowState = FormWindowState.Maximized;
+                frm.Show();
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info("frmConsultationDetails\r\n" + ex.ToString());
             }
         }
     }

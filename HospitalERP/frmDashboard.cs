@@ -33,7 +33,11 @@ namespace HospitalERP
                 if (LoggedUser.id > 0)
                 {
                     SetMenuItems();
-
+                    // Hiding User role options for usertype 3, 4
+                    if (LoggedUser.type_id == 3 || LoggedUser.type_id == 4)
+                    {
+                        btnDashUserRole.Visible = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -49,7 +53,7 @@ namespace HospitalERP
                 DataTable dtMenu = mn.GetUserTypeMenusRemoveList(LoggedUser.type_id);
                
                 string[] console1 = new string[] {"btnDashReg","btnDashApp","btnDashBill" };
-                string[] console2 = new string[] { "btnDashDocs", "btnDashStaffGen", "btnDashStaffType", "btnDashDept", "btnDashProc", "btnDashProcType" };
+                string[] console2 = new string[] { "btnDashDocs", "btnDashStaffGen", "btnDashStaffType", "btnDashDept", "btnDashProc", "btnDashProcType", "btnDashInvestigation", "btnDashInvestigationType", "btnDashMedicine", "btnDashMedType" };
                 string[] console3 = new string[] { "btnDashUserRole", "btnDashOpt", "btnDashReports"};
                 foreach (DataRow dr in dtMenu.Rows)
                 {
@@ -241,11 +245,11 @@ namespace HospitalERP
         {
             try
             {
-                if (Application.OpenForms.OfType<frmInvestigations>().Count() == 1)
-                    Application.OpenForms.OfType<frmInvestigations>().First().BringToFront();
+                if (Application.OpenForms.OfType<frmProcedures>().Count() == 1)
+                    Application.OpenForms.OfType<frmProcedures>().First().BringToFront();
                 else
                 {
-                    frmInvestigations frm = new frmInvestigations();
+                    frmProcedures frm = new frmProcedures();
                     frm.MdiParent = this.MdiParent;
                     frm.Show();
                 }
@@ -309,11 +313,11 @@ namespace HospitalERP
         {
             try
             {
-                if (Application.OpenForms.OfType<frmInvestigationTypes>().Count() == 1)
-                    Application.OpenForms.OfType<frmInvestigationTypes>().First().BringToFront();
+                if (Application.OpenForms.OfType<frmProcTypes>().Count() == 1)
+                    Application.OpenForms.OfType<frmProcTypes>().First().BringToFront();
                 else
                 {
-                    frmInvestigationTypes frm = new frmInvestigationTypes();
+                    frmProcTypes frm = new frmProcTypes();
                     frm.MdiParent = this.MdiParent;
                     frm.Show();
                 }
@@ -421,6 +425,50 @@ namespace HospitalERP
             {
                 CommonLogger.Info(ex.ToString());
             }
+        }
+
+        private void btnDashInvestigation_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmInvestigations>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigations>().First().BringToFront();
+                else
+                {
+                    frmInvestigations frm = new frmInvestigations();
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void btnDashInvestigationType_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmInvestigationTypes>().Count() == 1)
+                    Application.OpenForms.OfType<frmInvestigationTypes>().First().BringToFront();
+                else
+                {
+                    frmInvestigationTypes frm = new frmInvestigationTypes();
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
+        private void flowPanelDashMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -107,13 +107,13 @@
                   <Width>1.96703cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.02375cm</Width>
+                  <Width>2.14528cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.63229cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.50188cm</Width>
+                  <Width>2.75588cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.865cm</Width>
@@ -130,7 +130,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.25264cm</Height>
+                  <Height>0.70231cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -141,14 +141,17 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Bill date</Value>
+                                  <Value>Bill Date</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox35</rd:DefaultName>
@@ -158,8 +161,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -178,11 +179,14 @@
                                   <Value>Bill#</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
@@ -192,8 +196,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -212,11 +214,14 @@
                                   <Value>Doctor Name</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox9</rd:DefaultName>
@@ -226,8 +231,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -246,11 +249,14 @@
                                   <Value>Patient Name</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
@@ -260,8 +266,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -280,11 +284,14 @@
                                   <Value>Bill Status</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox29</rd:DefaultName>
@@ -294,8 +301,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -314,12 +319,13 @@
                                   <Value>Bill Amount</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -330,8 +336,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -350,12 +354,13 @@
                                   <Value>Bill Paid</Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
-                                    <FontSize>12pt</FontSize>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -366,8 +371,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -383,15 +386,23 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value> Balance</Value>
+                                  <Value xml:space="preserve"> </Value>
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
+                                <TextRun>
+                                  <Value>Balance</Value>
+                                  <Style>
+                                    <FontFamily>Calibri</FontFamily>
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                             <Paragraph>
@@ -405,7 +416,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                             <Paragraph>
@@ -428,8 +439,6 @@
                               <Style>Solid</Style>
                             </Border>
                             <BackgroundColor>LightSteelBlue</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -454,11 +463,13 @@
                                   <Style>
                                     <FontFamily>Calibri</FontFamily>
                                     <FontWeight>Normal</FontWeight>
-                                    <Format>=Format(Fields!appt_date.Value, "dd/MM/yyyy")</Format>
+                                    <Format>dd-MM-yyyy</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>appt_date1</rd:DefaultName>
@@ -491,7 +502,9 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>bill_number</rd:DefaultName>
@@ -524,6 +537,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <LeftIndent>2pt</LeftIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
@@ -557,6 +571,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <LeftIndent>2pt</LeftIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
@@ -590,6 +605,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <LeftIndent>2pt</LeftIndent>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
@@ -1004,8 +1020,8 @@
             <KeepTogether>true</KeepTogether>
             <DataSetName>dsBilling</DataSetName>
             <Top>0.14111cm</Top>
-            <Height>3.01709cm</Height>
-            <Width>16.6423cm</Width>
+            <Height>2.46676cm</Height>
+            <Width>17.01783cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1014,13 +1030,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.33333in</Height>
+        <Height>1.225in</Height>
         <Style />
       </Body>
-      <Width>6.6916in</Width>
+      <Width>6.7416in</Width>
       <Page>
         <PageHeader>
-          <Height>2.76069cm</Height>
+          <Height>2.97059cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1035,6 +1051,7 @@
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>20pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                         <Color>Teal</Color>
                       </Style>
                     </TextRun>
@@ -1045,9 +1062,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Left>0.42333cm</Left>
-              <Height>1.37019cm</Height>
-              <Width>16.51cm</Width>
+              <Top>0.11667in</Top>
+              <Left>0cm</Left>
+              <Height>1.07386cm</Height>
+              <Width>17.01783cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1069,6 +1087,7 @@
                       <Style>
                         <FontFamily>Calibri</FontFamily>
                         <FontSize>16pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1078,10 +1097,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>1.44074cm</Top>
-              <Left>0.13229cm</Left>
+              <Top>1.37019cm</Top>
+              <Left>0cm</Left>
               <Height>0.69701cm</Height>
-              <Width>16.51cm</Width>
+              <Width>17.01783cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -1115,10 +1134,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox8</rd:DefaultName>
-              <Top>2.08308cm</Top>
-              <Left>4.7625cm</Left>
-              <Height>0.67761cm</Height>
-              <Width>6.65078cm</Width>
+              <Top>2.0672cm</Top>
+              <Left>0cm</Left>
+              <Height>0.61411cm</Height>
+              <Width>17.01783cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -1137,50 +1156,6 @@
             </Border>
           </Style>
         </PageHeader>
-        <PageFooter>
-          <Height>1.08479cm</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
-          <ReportItems>
-            <Textbox Name="Textbox14">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Tel: 2521566, P.O. Box: 944, Nizwa, Postal Code: 611, Sultanate of Oman, C.R.: 1218089</Value>
-                      <Style>
-                        <FontWeight>SemiBold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox14</rd:DefaultName>
-              <Top>0.3053cm</Top>
-              <Height>0.6cm</Height>
-              <Width>16.51cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>

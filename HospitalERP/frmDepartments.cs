@@ -25,6 +25,7 @@ namespace HospitalERP
                 this.WindowState = FormWindowState.Maximized;
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
                 dgvDept.AutoGenerateColumns = false;
+                this.MaximizeBox = true;
             }
             catch (Exception ex)
             {

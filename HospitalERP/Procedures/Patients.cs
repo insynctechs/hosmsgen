@@ -13,12 +13,12 @@ namespace HospitalERP.Procedures
         
         public int addPatients(string first_name, string last_name, char gender, DateTime dob, string nationality, string legal_id,
             DateTime legal_id_expiry, string address, string city, string state, string zip,
-            string phone, string email, string history, string allergies, int loggedid)
+            string phone, string email, string history, string allergies, int loggedid, int age)
         {
             int ret = -1;
             try
             {
-                SqlParameter[] sqlParam = new SqlParameter[16];
+                SqlParameter[] sqlParam = new SqlParameter[17];
                 sqlParam[0] = new SqlParameter("@first_name", first_name);
                 sqlParam[1] = new SqlParameter("@last_name", last_name);           
                 sqlParam[2] = new SqlParameter("@gender", gender);
@@ -35,7 +35,7 @@ namespace HospitalERP.Procedures
                 sqlParam[13] = new SqlParameter("@history", history);
                 sqlParam[14] = new SqlParameter("@allergies", allergies);
                 sqlParam[15] = new SqlParameter("@loggedid", loggedid);
-                //sqlParam[16] = new SqlParameter("@patient_type", patient_type);
+                sqlParam[16] = new SqlParameter("@age", age);
 
                 ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspPatients_Add", sqlParam).ToString());
             }
@@ -72,12 +72,12 @@ namespace HospitalERP.Procedures
 
         public int editPatients(int id, string first_name, string last_name, char gender, DateTime dob, string nationality, string legal_id,
             DateTime legal_id_expiry, string address, string city, string state, string zip,
-            string phone, string email, string history, string allergies, int loggedid)
+            string phone, string email, string history, string allergies, int loggedid, int age)
         {
             int ret = -1;
             try
             {
-                SqlParameter[] sqlParam = new SqlParameter[17];
+                SqlParameter[] sqlParam = new SqlParameter[18];
                 sqlParam[0] = new SqlParameter("@id", id);               
                 sqlParam[1] = new SqlParameter("@first_name", first_name);
                 sqlParam[2] = new SqlParameter("@last_name", last_name);
@@ -95,6 +95,7 @@ namespace HospitalERP.Procedures
                 sqlParam[14] = new SqlParameter("@history", history);
                 sqlParam[15] = new SqlParameter("@allergies", allergies);
                 sqlParam[16] = new SqlParameter("@loggedid", loggedid);
+                sqlParam[17] = new SqlParameter("@age", age);
                 ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspPatients_Edit", sqlParam).ToString());
             }
             catch (DbException ex)
@@ -123,7 +124,7 @@ namespace HospitalERP.Procedures
                 return null;
             }
         }
-
+        /*
         public DataTable GetRecordsDetailedSearch(string SearchBy, string SearchValue)
         {
             try
@@ -132,6 +133,25 @@ namespace HospitalERP.Procedures
                 sqlParam[0] = new SqlParameter("@SearchBy", SearchBy);
                 sqlParam[1] = new SqlParameter("@SearchValue", SearchValue);
                 DataSet dt = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspPatients_GetDetailedSearch", sqlParam);
+                return dt.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return null;
+            }
+        }
+        */
+        // New implementation - 01-April-2019
+        // Getting patient-appointment records
+        public DataTable GetRecordsDetailedSearch(string SearchBy, string SearchValue)
+        {
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[2];
+                sqlParam[0] = new SqlParameter("@SearchBy", SearchBy);
+                sqlParam[1] = new SqlParameter("@SearchValue", SearchValue);
+                DataSet dt = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspPatients_GetDetailedSearch_NEW", sqlParam);
                 return dt.Tables[0];
             }
             catch (Exception ex)
@@ -179,6 +199,7 @@ namespace HospitalERP.Procedures
                 dt.Rows.Add(new object[] { "p.patient_number", "Patient Number" });
                 dt.Rows.Add(new object[] { "p.first_name", "First Name" });
                 dt.Rows.Add(new object[] { "p.last_name", "Last Name" });
+                //dt.Rows.Add(new object[] { "Pr.name", "Procedure" });
 
                 return dt;
             }
@@ -225,6 +246,23 @@ namespace HospitalERP.Procedures
                 return null;
             }
 
+        }
+
+        public int DeletePatient(int pid)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", pid);                
+                ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspPatient_Delete", sqlParam).ToString());
+            }
+            catch (DbException ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return -1;
+            }
+            return ret;
         }
 
         public void Dispose()

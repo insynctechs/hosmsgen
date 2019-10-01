@@ -12,7 +12,7 @@ namespace HospitalERP.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,11 +26,22 @@ namespace HospitalERP.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-RKNU53S\\SQLEXPRESS01;Initial Catalog=hospitalERP_db;Persist S" +
-            "ecurity Info=True;User ID=sumi;Password=jesus123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UJJCNEF\\SQLEXPRESS;Initial Catalog=hospitalERP_db;Persist Sec" +
+            "urity Info=True;User ID=sa;Password=jesus123")]
         public string connstr {
             get {
                 return ((string)(this["connstr"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ALPHADOG-P\\INSYNCSQL;Initial Catalog=hospitalERP_db;Integrated Securi" +
+            "ty=True")]
+        public string hospitalERP_dbConnectionString {
+            get {
+                return ((string)(this["hospitalERP_dbConnectionString"]));
             }
         }
     }

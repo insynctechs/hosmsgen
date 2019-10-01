@@ -56,5 +56,59 @@ namespace HospitalERP
         {
             Utils.toggleChildCloseButton(this.MdiParent, 1);
         }
+
+        private void btnProcedureRpt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                /*
+                if (Application.OpenForms.OfType<frmRptProcedure>().Count() == 1)
+                    Application.OpenForms.OfType<frmRptProcedure>().First().BringToFront();
+                else
+                {
+
+                    frmRptProcedure frm = new frmRptProcedure();
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                */
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+        private void btnProc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Application.OpenForms.OfType<frmRptProcedure>().Count() == 1)
+                    Application.OpenForms.OfType<frmRptProcedure>().First().BringToFront();
+                else
+                {
+
+                    frmRptProcedure frm = new frmRptProcedure();
+                    frm.MdiParent = this.MdiParent;
+                    frm.Show();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+        }
+
+
+        private void frmReports_Shown(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmReports_Enter(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

@@ -37,9 +37,15 @@ namespace HospitalERP
                 {
                     tabSub.TabPages.Remove(tabPgList);
                 }
+
                 dgvList.AutoGenerateColumns = false;
+                
+                // Removing the following properties fixed cascading windows.
+                /*
                 this.MaximizeBox = false;
                 this.MinimizeBox = false;
+                */
+
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             }
             catch (Exception ex)

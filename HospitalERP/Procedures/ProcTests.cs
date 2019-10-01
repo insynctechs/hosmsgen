@@ -100,6 +100,23 @@ namespace HospitalERP.Procedures
 
         }
 
+        public int DeleteProcedure(int pid)
+        {
+            int ret = -1;
+            try
+            {
+                SqlParameter[] sqlParam = new SqlParameter[1];
+                sqlParam[0] = new SqlParameter("@id", pid);
+                ret = Convert.ToInt32(SqlHelper.ExecuteScalar(conn, CommandType.StoredProcedure, "uspProcedure_Delete", sqlParam).ToString());
+            }
+            catch (Exception ex)
+            {
+                Helpers.CommonLogger.Error(ex.Message, ex);
+                return -1;
+            }
+            return ret;
+        }
+
         public void Dispose()
         {
             conn = null;

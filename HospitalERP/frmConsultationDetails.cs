@@ -52,8 +52,11 @@ namespace HospitalERP
         {
             try
             {
-                this.WindowState = FormWindowState.Maximized;
+                //this.WindowState = FormWindowState.Maximized;
+
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+                this.MaximizeBox = true;
+
                 dgvProc.AutoGenerateColumns = false;
                 dgvInv.AutoGenerateColumns = false;
                 dgvApptHistory.AutoGenerateColumns = false;
@@ -113,6 +116,8 @@ namespace HospitalERP
             {                
                 dgvApptHistory.DataSource = objCD.getApptHistory(Convert.ToInt32(txtAppID.Text),Convert.ToInt32(txtPatientID.Text));                
                 ShowProceduresHistory(0);
+                ShowInvestigationHistory(0);
+                
 
             }
             catch (Exception ex)
@@ -127,7 +132,7 @@ namespace HospitalERP
             {
                 dgvApptHistory.Rows[index].Selected = true;
                 int app_id = Convert.ToInt32(dgvApptHistory.Rows[index].Cells["colHistID"].Value);
-                lblHeadProcHist.Text = "PROCEDURES DONE ON APPT. DATE " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
+                lblHeadProcHist.Text = "PROCEDURES ON " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
                 dgvHistoryProcedures.DataSource = objCD.getProceduresFromApptID(app_id);
             }
             catch (Exception ex)
@@ -136,6 +141,24 @@ namespace HospitalERP
             }
 
         }
+
+        // NEW CODE - To display the Investigation history performed
+        private void ShowInvestigationHistory(int index)
+        {
+            try
+            {
+                dgvApptHistory.Rows[index].Selected = true;
+                int app_id = Convert.ToInt32(dgvApptHistory.Rows[index].Cells["colHistID"].Value);
+                lblHeadInvesHist.Text = "INVESTIGATIONS ON " + Utils.FormatDateShort(dgvApptHistory.Rows[index].Cells["colHistDate"].Value.ToString());
+                dgvHistoryInvestigations.DataSource = objCD.getInvestigationsFromApptID(app_id);
+            }
+            catch (Exception ex)
+            {
+                CommonLogger.Info(ex.ToString());
+            }
+
+        }
+
 
 
         private void getConsultationDetails()
@@ -232,44 +255,51 @@ namespace HospitalERP
         {
             try
             {
-                if (ValidateChildren(ValidationConstraints.Enabled))
-                {
-                    int rtn = -1;
-                    if (txtApptProcID.Text.Trim() == "") //add data
-                    {
-                        rtn = objCD.addProcedures(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbProcedure.SelectedValue.ToString()), txtProcNotes.Text.Trim(), Convert.ToDecimal(txtFee.Text), Convert.ToInt32(cmbStatus.SelectedValue.ToString()));
-                        if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                        else if (rtn == 0)
-                            ShowStatus(0, "Name must be unique!");
-                        else if (rtn == 1)
-                        {
-
-                            ShowStatus(1, "Record succesfully added!");
-                            clearFormFields();
-                            getProcedureList();
-                        }
-                    }
-                    else //edit record
-                    {
-                        rtn = objCD.editProcedures(Convert.ToInt32(txtApptProcID.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbProcedure.SelectedValue.ToString()), txtProcNotes.Text.Trim(), Convert.ToDecimal(txtFee.Text), Convert.ToInt32(cmbStatus.SelectedValue.ToString()));
-                        if (rtn == 0)
-                            ShowStatus(0, "This name already exists. Please provide unique name!");
-                        else if (rtn == 1)
-                        {
-                            ShowStatus(1, "Record succesfully updated!");
-                            clearFormFields();
-                            getProcedureList();
-                        }
-                        else if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                    }
-
+                // For completed appointments, save functionality is disabled
+                if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2") {
+                    ShowStatus(0, "Not allowed! Appointment Completed.");
                 }
+                else
+                {
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        int rtn = -1;
+                        if (txtApptProcID.Text.Trim() == "") //add data
+                        {
+                            rtn = objCD.addProcedures(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbProcedure.SelectedValue.ToString()), txtProcNotes.Text.Trim(), Convert.ToDecimal(txtFee.Text), Convert.ToInt32(cmbStatus.SelectedValue.ToString()));
+                            if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                            else if (rtn == 0)
+                                ShowStatus(0, "Record already exists!");
+                            else if (rtn == 1)
+                            {
+
+                                ShowStatus(1, "Record succesfully added!");
+                                clearFormFields();
+                                getProcedureList();
+                            }
+                        }
+                        else //edit record
+                        {
+                            rtn = objCD.editProcedures(Convert.ToInt32(txtApptProcID.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbProcedure.SelectedValue.ToString()), txtProcNotes.Text.Trim(), Convert.ToDecimal(txtFee.Text), Convert.ToInt32(cmbStatus.SelectedValue.ToString()));
+                            if (rtn == 0)
+                                ShowStatus(0, "This name already exists. Please provide unique name!");
+                            else if (rtn == 1)
+                            {
+                                ShowStatus(1, "Record succesfully updated!");
+                                clearFormFields();
+                                getProcedureList();
+                            }
+                            else if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                        }
+                    }
+                }
+                
             }
             catch (Exception ex)
             {
@@ -350,7 +380,10 @@ namespace HospitalERP
             {
                 if (txtApptProcID.Text == "") //load fees from procedure table
                 {
-                    txtFee.Text = objCD.getProcedureFees(Convert.ToInt32(cmbProcedure.SelectedValue.ToString()));
+                    if (cmbProcedure.SelectedIndex != 0)
+                    {
+                        txtFee.Text = objCD.getProcedureFees(Convert.ToInt32(cmbProcedure.SelectedValue.ToString()));
+                    }                                    
                 }
             }
             catch (Exception ex)
@@ -404,6 +437,7 @@ namespace HospitalERP
             try
             {
                 ShowProceduresHistory(e.RowIndex);
+                ShowInvestigationHistory(e.RowIndex);
             }
             catch (Exception ex)
             {
@@ -579,6 +613,8 @@ namespace HospitalERP
                         
                     case 4:
                         dgvHistoryProcedures.AutoGenerateColumns = false;
+                        // NEW CODE - To avoid displaying autogen columns
+                        dgvHistoryInvestigations.AutoGenerateColumns = false;
                         setGridViews();
                         break;
                 }
@@ -589,7 +625,7 @@ namespace HospitalERP
             }
 
         }
-
+        // NEW CODE - FOR CELL CONTENT CLICK
         private void dgvApptHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -597,7 +633,10 @@ namespace HospitalERP
                 switch (dgvApptHistory.Columns[e.ColumnIndex].Name)
                 {
                     case "btnHistSelect":
-                        ShowProceduresHistory(e.RowIndex);
+                        {
+                            ShowProceduresHistory(e.RowIndex);
+                            ShowInvestigationHistory(e.RowIndex);
+                        }
                         break;
                 }
             }
@@ -725,10 +764,13 @@ namespace HospitalERP
 
             try
             {
+                if (cmbMedicine.SelectedIndex != 0)
+                {
                     sdet = objMed.getMedicinePrescription(Convert.ToInt32(cmbMedicine.SelectedValue.ToString()));
-                    strArr =sdet.Split(new string[] { "^>$<" }, StringSplitOptions.None);
+                    strArr = sdet.Split(new string[] { "^>$<" }, StringSplitOptions.None);
                     txtPrescription.Text = strArr[0];
                     txtType.Text = strArr[1];
+                }
             }
             catch (Exception ex)
             {
@@ -741,44 +783,51 @@ namespace HospitalERP
         {
             try
             {
-                if (ValidateChildren(ValidationConstraints.Enabled))
+                if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
                 {
-                    int rtn = -1;
-                    if (txtAppMedId.Text.Trim() == "") //add data
-                    {
-                        rtn = objMed.addMedicines(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbMedicine.SelectedValue.ToString()), txtPrescription.Text.Trim());
-                        if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                        else if (rtn == 0)
-                            ShowStatus(0, "Name must be unique!");
-                        else if (rtn == 1)
-                        {
-
-                            //ShowStatus(1, "Record successfully added!");
-                            clearMedFormFields();
-                            getMedicineList();
-                        }
-                    }
-                    else //edit record
-                    {
-                        rtn = objMed.editMedicines(Convert.ToInt32(txtAppMedId.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbMedicine.SelectedValue.ToString()), txtPrescription.Text.Trim());
-                        if (rtn == 0)
-                            ShowStatus(0, "This name already exists. Please provide unique name!");
-                        else if (rtn == 1)
-                        {
-                            //ShowStatus(1, "Record successfully updated!");
-                            clearMedFormFields();
-                            getMedicineList();
-                        }
-                        else if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                    }
-
+                    ShowStatus(0, "Not allowed! Appointment Completed.");
                 }
+                else
+                {
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        int rtn = -1;
+                        if (txtAppMedId.Text.Trim() == "") //add data
+                        {
+                            rtn = objMed.addMedicines(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbMedicine.SelectedValue.ToString()), txtPrescription.Text.Trim());
+                            if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                            else if (rtn == 0)
+                                ShowStatus(0, "Record already exists!");
+                            else if (rtn == 1)
+                            {
+
+                                ShowStatus(1, "Record successfully added!");
+                                clearMedFormFields();
+                                getMedicineList();
+                            }
+                        }
+                        else //edit record
+                        {
+                            rtn = objMed.editMedicines(Convert.ToInt32(txtAppMedId.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbMedicine.SelectedValue.ToString()), txtPrescription.Text.Trim());
+                            if (rtn == 0)
+                                ShowStatus(0, "This name already exists. Please provide unique name!");
+                            else if (rtn == 1)
+                            {
+                                //ShowStatus(1, "Record successfully updated!");
+                                clearMedFormFields();
+                                getMedicineList();
+                            }
+                            else if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                        }
+                    }
+                }
+                
             }
             catch (Exception ex)
             {
@@ -838,17 +887,29 @@ namespace HospitalERP
                 switch (dgvMedicine.Columns[e.ColumnIndex].Name)
                 {
                     case "colBtnEdit":
-                        txtAppMedId.Text = dgvMedicine.Rows[e.RowIndex].Cells["colID"].Value.ToString();
-                        cmbMedicine.SelectedValue = dgvMedicine.Rows[e.RowIndex].Cells[6].Value.ToString();
-                        txtPrescription.Text = dgvMedicine.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        txtType.Text = dgvMedicine.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else
+                        {
+                            txtAppMedId.Text = dgvMedicine.Rows[e.RowIndex].Cells["colID"].Value.ToString();
+                            cmbMedicine.SelectedValue = dgvMedicine.Rows[e.RowIndex].Cells[6].Value.ToString();
+                            txtPrescription.Text = dgvMedicine.Rows[e.RowIndex].Cells[3].Value.ToString();
+                            txtType.Text = dgvMedicine.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        } 
                         break;
+
                     case "colDel":
-                        DeletePatientMedicine(Int32.Parse(dgvMedicine.Rows[e.RowIndex].Cells["colID"].Value.ToString()));
-                        getMedicineList();
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else {
+                            DeletePatientMedicine(Int32.Parse(dgvMedicine.Rows[e.RowIndex].Cells["colID"].Value.ToString()));
+                            getMedicineList();
+                        }  
                         break;
-
-
                 }
             }
             catch (Exception ex)
@@ -927,18 +988,35 @@ namespace HospitalERP
             {
                 switch (dgvProc.Columns[e.ColumnIndex].Name)
                 {
+
                     case "btnProcEdit":
-                        txtApptProcID.Text = dgvProc.Rows[e.RowIndex].Cells["cid"].Value.ToString();
-                        DataTable dt = objCD.getProceduresFromProcID(Convert.ToInt32(txtApptProcID.Text));
-                        txtFee.Text = dt.Rows[0]["fee"].ToString();
-                        cmbProcedure.SelectedValue = dt.Rows[0]["procedure_id"].ToString();
-                        cmbStatus.SelectedValue = dt.Rows[0]["status"].ToString();
-                        txtProcNotes.Text = dt.Rows[0]["notes"].ToString();
-                        break;
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else
+                        {
+                            txtApptProcID.Text = dgvProc.Rows[e.RowIndex].Cells["cid"].Value.ToString();
+                            DataTable dt = objCD.getProceduresFromProcID(Convert.ToInt32(txtApptProcID.Text));
+                            txtFee.Text = dt.Rows[0]["fee"].ToString();
+                            cmbProcedure.SelectedValue = dt.Rows[0]["procedure_id"].ToString();
+                            cmbStatus.SelectedValue = dt.Rows[0]["status"].ToString();
+                            txtProcNotes.Text = dt.Rows[0]["notes"].ToString();
+                        } 
+                            break;
+                        
+                        
 
                     case "btnProcDelete":
-                        DeletePatientProcedure(Int32.Parse(dgvProc.Rows[e.RowIndex].Cells["cid"].Value.ToString()));
-                        getProcedureList();
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else
+                        {
+                            DeletePatientProcedure(Int32.Parse(dgvProc.Rows[e.RowIndex].Cells["cid"].Value.ToString()));
+                            getProcedureList();
+                        }                          
                         break;
 
 
@@ -999,11 +1077,6 @@ namespace HospitalERP
             }
         }
 
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void cmbInvestigation_Validating(object sender, CancelEventArgs e)
         {
             try
@@ -1032,7 +1105,10 @@ namespace HospitalERP
             {
                 if (txtAppInvId.Text == "") //load fees from investigation table
                 {
-                    txtInvFee.Text = objCD.getInvestigationFees(Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()));
+                    if (cmbInvestigation.SelectedIndex != 0)
+                    {
+                        txtInvFee.Text = objCD.getInvestigationFees(Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()));
+                    }
                 }
             }
             catch (Exception ex)
@@ -1046,44 +1122,51 @@ namespace HospitalERP
         {
             try
             {
-                if (ValidateChildren(ValidationConstraints.Enabled))
+                if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
                 {
-                    int rtn = -1;
-                    if (txtAppInvId.Text.Trim() == "") //add data
-                    {
-                        rtn = objCD.addInvestigations(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
-                        if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                        else if (rtn == 0)
-                            ShowStatus(0, "Name must be unique!");
-                        else if (rtn == 1)
-                        {
-
-                            ShowStatus(1, "Record succesfully added!");
-                            clearFormInvFields();
-                            getInvestigationList();
-                        }
-                    }
-                    else //edit record
-                    {
-                        rtn = objCD.editInvestigations(Convert.ToInt32(txtAppInvId.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
-                        if (rtn == 0)
-                            ShowStatus(0, "This name already exists. Please provide unique name!");
-                        else if (rtn == 1)
-                        {
-                            ShowStatus(1, "Record succesfully updated!");
-                            clearFormInvFields();
-                            getInvestigationList();
-                        }
-                        else if (rtn == -1)
-                        {
-                            ShowStatus(0, "Some error occurred... Record cannot be added!");
-                        }
-                    }
-
+                    ShowStatus(0, "Not allowed! Appointment Completed.");
                 }
+                else
+                {
+                    if (ValidateChildren(ValidationConstraints.Enabled))
+                    {
+                        int rtn = -1;
+                        if (txtAppInvId.Text.Trim() == "") //add data
+                        {
+                            rtn = objCD.addInvestigations(Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
+                            if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                            else if (rtn == 0)
+                                ShowStatus(0, "Record already exists!");
+                            else if (rtn == 1)
+                            {
+
+                                ShowStatus(1, "Record succesfully added!");
+                                clearFormInvFields();
+                                getInvestigationList();
+                            }
+                        }
+                        else //edit record
+                        {
+                            rtn = objCD.editInvestigations(Convert.ToInt32(txtAppInvId.Text.Trim()), Convert.ToInt32(txtPatientID.Text), Convert.ToInt32(txtDoctorID.Text), Convert.ToInt32(txtAppID.Text), Convert.ToInt32(cmbInvestigation.SelectedValue.ToString()), txtInvNotes.Text.Trim(), Convert.ToDecimal(txtInvFee.Text), Convert.ToInt32(cmbInvStatus.SelectedValue.ToString()));
+                            if (rtn == 0)
+                                ShowStatus(0, "This name already exists. Please provide unique name!");
+                            else if (rtn == 1)
+                            {
+                                ShowStatus(1, "Record succesfully updated!");
+                                clearFormInvFields();
+                                getInvestigationList();
+                            }
+                            else if (rtn == -1)
+                            {
+                                ShowStatus(0, "Some error occurred... Record cannot be added!");
+                            }
+                        }
+                    }
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -1169,17 +1252,31 @@ namespace HospitalERP
                 switch (dgvInv.Columns[e.ColumnIndex].Name)
                 {
                     case "btnInvEdit":
-                        txtAppInvId.Text = dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString();
-                        DataTable dt = objCD.getInvestigationsFromInvID(Convert.ToInt32(txtAppInvId.Text));
-                        txtInvFee.Text = dt.Rows[0]["fee"].ToString();
-                        cmbInvestigation.SelectedValue = dt.Rows[0]["investigation_id"].ToString();
-                        cmbInvStatus.SelectedValue = dt.Rows[0]["status"].ToString();
-                        txtInvNotes.Text = dt.Rows[0]["notes"].ToString();
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else
+                        {
+                            txtAppInvId.Text = dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString();
+                            DataTable dt = objCD.getInvestigationsFromInvID(Convert.ToInt32(txtAppInvId.Text));
+                            txtInvFee.Text = dt.Rows[0]["fee"].ToString();
+                            cmbInvestigation.SelectedValue = dt.Rows[0]["investigation_id"].ToString();
+                            cmbInvStatus.SelectedValue = dt.Rows[0]["status"].ToString();
+                            txtInvNotes.Text = dt.Rows[0]["notes"].ToString();
+                        }
                         break;
 
                     case "btnInvDelete":
-                        DeletePatientInvestigation(Int32.Parse(dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString()));
-                        getInvestigationList();
+                        if (objCD.getRecordFromID(Convert.ToInt32(txtAppID.Text)).Rows[0]["status"].ToString() == "2")
+                        {
+                            ShowStatus(0, "Not allowed! Appointment Completed.");
+                        }
+                        else
+                        {
+                            DeletePatientInvestigation(Int32.Parse(dgvInv.Rows[e.RowIndex].Cells["inv_id"].Value.ToString()));
+                            getInvestigationList();
+                        }
                         break;
 
 
@@ -1189,6 +1286,31 @@ namespace HospitalERP
             {
                 CommonLogger.Info("frmConsultationDetails\r\n" + ex.ToString());
             }
+        }
+
+        private void dgvHistoryProcedures_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label25_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHeadProcHist_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmConsultationDetails_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

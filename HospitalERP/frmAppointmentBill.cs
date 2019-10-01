@@ -226,5 +226,13 @@ namespace HospitalERP
             }
 
         }
+
+        private void frmAppointmentBill_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Utils.toggleChildCloseButton(this.MdiParent, 1);
+            bill.Dispose();
+            app.Dispose();
+            pat.Dispose();
+        }
     }
 }

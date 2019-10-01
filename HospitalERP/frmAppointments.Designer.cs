@@ -72,6 +72,9 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPatNum = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblStatusCombo = new System.Windows.Forms.Label();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnList = new System.Windows.Forms.Button();
             this.txtAppID = new System.Windows.Forms.TextBox();
@@ -85,11 +88,9 @@
             this.PPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PDoctor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PVisitDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PBtnSelect = new System.Windows.Forms.DataGridViewButtonColumn();
             this.PBtnHistory = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblStatusCombo = new System.Windows.Forms.Label();
-            this.cmbStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,8 +104,8 @@
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -152,6 +153,7 @@
             this.PPhone,
             this.PDoctor,
             this.PVisitDate,
+            this.Status,
             this.PBtnSelect,
             this.PBtnHistory});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -287,63 +289,81 @@
             // 
             // AID
             // 
+            this.AID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AID.DataPropertyName = "id";
+            this.AID.FillWeight = 5F;
             resources.ApplyResources(this.AID, "AID");
             this.AID.Name = "AID";
             this.AID.ReadOnly = true;
             // 
             // APatID
             // 
+            this.APatID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.APatID.DataPropertyName = "patient_id";
+            this.APatID.FillWeight = 5F;
             resources.ApplyResources(this.APatID, "APatID");
             this.APatID.Name = "APatID";
             this.APatID.ReadOnly = true;
             // 
             // ADocID
             // 
+            this.ADocID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ADocID.DataPropertyName = "doctor_id";
+            this.ADocID.FillWeight = 5F;
             resources.ApplyResources(this.ADocID, "ADocID");
             this.ADocID.Name = "ADocID";
             this.ADocID.ReadOnly = true;
             // 
             // APatNum
             // 
+            this.APatNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.APatNum.DataPropertyName = "patient_number";
+            this.APatNum.FillWeight = 6F;
             resources.ApplyResources(this.APatNum, "APatNum");
             this.APatNum.Name = "APatNum";
             this.APatNum.ReadOnly = true;
             // 
             // APatName
             // 
+            this.APatName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.APatName.DataPropertyName = "patient_name";
+            this.APatName.FillWeight = 20F;
             resources.ApplyResources(this.APatName, "APatName");
             this.APatName.Name = "APatName";
             this.APatName.ReadOnly = true;
             // 
             // ADocName
             // 
+            this.ADocName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ADocName.DataPropertyName = "doctor_name";
+            this.ADocName.FillWeight = 10F;
             resources.ApplyResources(this.ADocName, "ADocName");
             this.ADocName.Name = "ADocName";
             this.ADocName.ReadOnly = true;
             // 
             // AToken
             // 
+            this.AToken.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AToken.DataPropertyName = "token";
+            this.AToken.FillWeight = 4F;
             resources.ApplyResources(this.AToken, "AToken");
             this.AToken.Name = "AToken";
             this.AToken.ReadOnly = true;
             // 
             // APrevDate
             // 
+            this.APrevDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.APrevDate.DataPropertyName = "prev_date";
+            this.APrevDate.FillWeight = 8F;
             resources.ApplyResources(this.APrevDate, "APrevDate");
             this.APrevDate.Name = "APrevDate";
             this.APrevDate.ReadOnly = true;
             // 
             // AStatus
             // 
+            this.AStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AStatus.DataPropertyName = "status";
+            this.AStatus.FillWeight = 5F;
             resources.ApplyResources(this.AStatus, "AStatus");
             this.AStatus.Name = "AStatus";
             this.AStatus.ReadOnly = true;
@@ -351,6 +371,7 @@
             // 
             // AStatusID
             // 
+            this.AStatusID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AStatusID.DataPropertyName = "status_id";
             resources.ApplyResources(this.AStatusID, "AStatusID");
             this.AStatusID.Name = "AStatusID";
@@ -358,6 +379,8 @@
             // 
             // ABtnDues
             // 
+            this.ABtnDues.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ABtnDues.FillWeight = 5F;
             resources.ApplyResources(this.ABtnDues, "ABtnDues");
             this.ABtnDues.Name = "ABtnDues";
             this.ABtnDues.ReadOnly = true;
@@ -366,6 +389,8 @@
             // 
             // ABtnStatus
             // 
+            this.ABtnStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ABtnStatus.FillWeight = 5F;
             resources.ApplyResources(this.ABtnStatus, "ABtnStatus");
             this.ABtnStatus.Name = "ABtnStatus";
             this.ABtnStatus.ReadOnly = true;
@@ -374,6 +399,8 @@
             // 
             // ABtnDetails
             // 
+            this.ABtnDetails.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ABtnDetails.FillWeight = 5F;
             resources.ApplyResources(this.ABtnDetails, "ABtnDetails");
             this.ABtnDetails.Name = "ABtnDetails";
             this.ABtnDetails.ReadOnly = true;
@@ -382,6 +409,8 @@
             // 
             // ABtnBill
             // 
+            this.ABtnBill.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ABtnBill.FillWeight = 5F;
             resources.ApplyResources(this.ABtnBill, "ABtnBill");
             this.ABtnBill.Name = "ABtnBill";
             this.ABtnBill.ReadOnly = true;
@@ -390,6 +419,8 @@
             // 
             // ABtnDelete
             // 
+            this.ABtnDelete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ABtnDelete.FillWeight = 5F;
             resources.ApplyResources(this.ABtnDelete, "ABtnDelete");
             this.ABtnDelete.Name = "ABtnDelete";
             this.ABtnDelete.ReadOnly = true;
@@ -398,7 +429,9 @@
             // 
             // ADues
             // 
+            this.ADues.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ADues.DataPropertyName = "dues";
+            this.ADues.FillWeight = 5F;
             resources.ApplyResources(this.ADues, "ADues");
             this.ADues.Name = "ADues";
             this.ADues.ReadOnly = true;
@@ -483,6 +516,25 @@
             this.txtPatNum.Name = "txtPatNum";
             this.txtPatNum.TextChanged += new System.EventHandler(this.txtPatNum_TextChanged);
             // 
+            // flowLayoutPanel7
+            // 
+            this.flowLayoutPanel7.Controls.Add(this.lblStatusCombo);
+            this.flowLayoutPanel7.Controls.Add(this.cmbStatus);
+            resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
+            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
+            // 
+            // lblStatusCombo
+            // 
+            resources.ApplyResources(this.lblStatusCombo, "lblStatusCombo");
+            this.lblStatusCombo.Name = "lblStatusCombo";
+            // 
+            // cmbStatus
+            // 
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.cmbStatus, "cmbStatus");
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.Name = "cmbStatus";
+            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.btnList);
@@ -514,69 +566,98 @@
             // 
             // PID
             // 
+            this.PID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PID.DataPropertyName = "id";
+            this.PID.FillWeight = 5F;
             resources.ApplyResources(this.PID, "PID");
             this.PID.Name = "PID";
             this.PID.ReadOnly = true;
             // 
             // PNum
             // 
+            this.PNum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PNum.DataPropertyName = "patient_number";
+            this.PNum.FillWeight = 6F;
             resources.ApplyResources(this.PNum, "PNum");
             this.PNum.Name = "PNum";
             this.PNum.ReadOnly = true;
             // 
             // Pname
             // 
+            this.Pname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Pname.DataPropertyName = "name";
+            this.Pname.FillWeight = 10F;
             resources.ApplyResources(this.Pname, "Pname");
             this.Pname.Name = "Pname";
             this.Pname.ReadOnly = true;
             // 
             // PGender
             // 
+            this.PGender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PGender.DataPropertyName = "gender";
+            this.PGender.FillWeight = 3F;
             resources.ApplyResources(this.PGender, "PGender");
             this.PGender.Name = "PGender";
             this.PGender.ReadOnly = true;
             // 
             // PAge
             // 
+            this.PAge.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PAge.DataPropertyName = "age";
+            this.PAge.FillWeight = 2F;
             resources.ApplyResources(this.PAge, "PAge");
             this.PAge.Name = "PAge";
             this.PAge.ReadOnly = true;
             // 
             // PAddress
             // 
+            this.PAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PAddress.DataPropertyName = "address1";
+            this.PAddress.FillWeight = 20F;
             resources.ApplyResources(this.PAddress, "PAddress");
             this.PAddress.Name = "PAddress";
             this.PAddress.ReadOnly = true;
             // 
             // PPhone
             // 
+            this.PPhone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PPhone.DataPropertyName = "phone";
+            this.PPhone.FillWeight = 5F;
             resources.ApplyResources(this.PPhone, "PPhone");
             this.PPhone.Name = "PPhone";
             this.PPhone.ReadOnly = true;
             // 
             // PDoctor
             // 
+            this.PDoctor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PDoctor.DataPropertyName = "doctor_name";
+            this.PDoctor.FillWeight = 10F;
             resources.ApplyResources(this.PDoctor, "PDoctor");
             this.PDoctor.Name = "PDoctor";
             this.PDoctor.ReadOnly = true;
             // 
             // PVisitDate
             // 
+            this.PVisitDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.PVisitDate.DataPropertyName = "meet_date";
+            this.PVisitDate.FillWeight = 5F;
             resources.ApplyResources(this.PVisitDate, "PVisitDate");
             this.PVisitDate.Name = "PVisitDate";
             this.PVisitDate.ReadOnly = true;
             // 
+            // Status
+            // 
+            this.Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Status.DataPropertyName = "status_name";
+            this.Status.FillWeight = 5F;
+            resources.ApplyResources(this.Status, "Status");
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // PBtnSelect
             // 
+            this.PBtnSelect.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PBtnSelect.FillWeight = 5F;
             resources.ApplyResources(this.PBtnSelect, "PBtnSelect");
             this.PBtnSelect.Name = "PBtnSelect";
             this.PBtnSelect.ReadOnly = true;
@@ -585,30 +666,13 @@
             // 
             // PBtnHistory
             // 
+            this.PBtnHistory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PBtnHistory.FillWeight = 5F;
             resources.ApplyResources(this.PBtnHistory, "PBtnHistory");
             this.PBtnHistory.Name = "PBtnHistory";
             this.PBtnHistory.ReadOnly = true;
             this.PBtnHistory.Text = "History";
             this.PBtnHistory.UseColumnTextForButtonValue = true;
-            // 
-            // flowLayoutPanel7
-            // 
-            this.flowLayoutPanel7.Controls.Add(this.lblStatusCombo);
-            this.flowLayoutPanel7.Controls.Add(this.cmbStatus);
-            resources.ApplyResources(this.flowLayoutPanel7, "flowLayoutPanel7");
-            this.flowLayoutPanel7.Name = "flowLayoutPanel7";
-            // 
-            // lblStatusCombo
-            // 
-            resources.ApplyResources(this.lblStatusCombo, "lblStatusCombo");
-            this.lblStatusCombo.Name = "lblStatusCombo";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.cmbStatus, "cmbStatus");
-            this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Name = "cmbStatus";
             // 
             // frmAppointments
             // 
@@ -639,10 +703,10 @@
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
             this.flowLayoutPanel7.ResumeLayout(false);
             this.flowLayoutPanel7.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -675,6 +739,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.DataGridView dgvPatient;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.Label lblStatusCombo;
+        private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn AID;
         private System.Windows.Forms.DataGridViewTextBoxColumn APatID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ADocID;
@@ -700,10 +767,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn PDoctor;
         private System.Windows.Forms.DataGridViewTextBoxColumn PVisitDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewButtonColumn PBtnSelect;
         private System.Windows.Forms.DataGridViewButtonColumn PBtnHistory;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
-        private System.Windows.Forms.Label lblStatusCombo;
-        private System.Windows.Forms.ComboBox cmbStatus;
     }
 }

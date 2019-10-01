@@ -121,6 +121,7 @@ namespace HospitalERP
                 this.WindowState = FormWindowState.Maximized;
                 PopulateSearch();
                 this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+                this.MaximizeBox = true;
             }
             catch (Exception ex)
             {

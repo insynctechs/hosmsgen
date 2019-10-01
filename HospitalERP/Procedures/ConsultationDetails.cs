@@ -224,6 +224,7 @@ namespace HospitalERP.Procedures
                 sqlParam[0] = new SqlParameter("@id", id);
                 DataSet ds = SqlHelper.ExecuteDataset(conn, CommandType.StoredProcedure, "uspConsultationDet_Procedures_Get", sqlParam);
                 return ds.Tables[0];
+
             }
             catch (Exception ex)
             {

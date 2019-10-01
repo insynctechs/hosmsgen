@@ -38,6 +38,7 @@ namespace HospitalERP
             patient_id = pat_id;
             appointment_id = 0;
             this.Text = "Schedule Appointment";
+            lblHead1.Text = "SCHEDULE APPOINTMENT";
         }
 
         private void frmReferToDoctor_Shown(object sender, EventArgs e)
@@ -50,18 +51,18 @@ namespace HospitalERP
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Double bill_total=0;
+            Double bill_total = 0;
             try
             {
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
                     int ret = -1;
-                    if(appointment_id==0)
+                    if (appointment_id == 0)
                         ret = app.addAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]));
                     else
-                        ret = app.ReferAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]),doctor_id,appointment_id);
+                        ret = app.ReferAppointment(patient_id, Int32.Parse(cmbDoctor.SelectedValue.ToString()), Convert.ToDateTime(dtpDate.Text), Int32.Parse(Utils.ProcedureStatus["Scheduled"]), doctor_id, appointment_id);
 
-                    
+
                     if (ret >= 1)
                     {
                         /* SJ commented generating bill on 13Nov2018
@@ -134,7 +135,7 @@ namespace HospitalERP
                 }
                 else if (Utils.DaysBetweenDates(dtpDate.Text, DateTime.Now.ToShortDateString()) > 0)
                 {
-                    
+
                     e.Cancel = true;
                     errorfocus = true;
                     dtpDate.Focus();
@@ -173,6 +174,11 @@ namespace HospitalERP
             {
                 CommonLogger.Info(ex.ToString());
             }
+        }
+
+        private void frmReferToDoctor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

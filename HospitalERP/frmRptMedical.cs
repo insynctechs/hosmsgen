@@ -121,5 +121,10 @@ namespace HospitalERP
         {
             this.Close();
         }
+
+        private void frmRptMedical_Enter(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }

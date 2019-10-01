@@ -8,20 +8,20 @@ namespace HospitalERP
 {
 
     public partial class frmAppointments : Form
-    {        
-        
+    {
+
         Doctors doc = new Doctors();
         Appointments app = new Appointments();
         Patients pat = new Patients();
         int startload = 0;
         int patient_id = 0;
-        
+
         public frmAppointments()
         {
             try
             {
                 InitializeComponent();
-        
+
             }
             catch (Exception ex)
             {
@@ -35,7 +35,7 @@ namespace HospitalERP
             {
                 InitializeComponent();
                 patient_id = patientid;
-                
+
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace HospitalERP
                 PopulateStatus();
                 GetDoctorsCombo(0);
                 PopulateSearch();
-                
+
                 if (patient_id > 0)
                 {
                     txtPatientID.Text = patient_id.ToString();
@@ -221,7 +221,7 @@ namespace HospitalERP
             }
         }
 
-        private void getAppointmentList(int click=0)
+        private void getAppointmentList(int click = 0)
         {
             /*DataGridViewComboBoxColumn dcombo;
             dcombo= (DataGridViewComboBoxColumn) dgvApp.Columns["colStatus"];
@@ -229,16 +229,19 @@ namespace HospitalERP
             dcombo.DisplayMember = "name";
             dcombo.ValueMember = "id";*/
             try
-            {
-                DataTable dtApps = app.getAllAppointmentsForDate(Convert.ToDateTime(dtpAppDate.Text), Int32.Parse(cmbDoc.SelectedValue.ToString()), Int32.Parse(cmbStatus.SelectedValue.ToString()));
-                dgvApp.DataSource = dtApps;
-                if (dtApps.Rows.Count == 0 && click == 1)
-                {
-                    MessageBox.Show("No Appointments Scheduled for the Chosen Date and Doctor");
-                }
+            {               
+                if (dtpAppDate.Text != "") {
+                    DataTable dtApps = app.getAllAppointmentsForDate(Convert.ToDateTime(dtpAppDate.Text), Int32.Parse(cmbDoc.SelectedValue.ToString()), Int32.Parse(cmbStatus.SelectedValue.ToString()));
+                    dgvApp.DataSource = dtApps;
+                    if (dtApps.Rows.Count == 0 && click == 1)
+                    {
+                        MessageBox.Show("No Appointments Scheduled for the Chosen Date and Doctor");
+                    }
+                }                
             }
             catch (Exception ex)
             {
+                Console.WriteLine("exception");
                 CommonLogger.Info(ex.ToString());
             }
 
@@ -273,7 +276,7 @@ namespace HospitalERP
 
         private void cmbDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             getAppointmentList();
             enableSaveButton();
 
@@ -332,14 +335,14 @@ namespace HospitalERP
                     case "ABtnBill":
                         if (dgvApp.Rows[e.RowIndex].Cells["AStatus"].Value.ToString() == "Completed" && Utils.DaysBetweenDates(dtpAppDate.Text, DateTime.Now.ToShortDateString()) >= 0)
                             ViewBill(Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["APatID"].Value.ToString()));
-                        else                            
+                        else
                             MessageBox.Show("Bills can be generated/viewed for today's/past completed appointments only", "Information", MessageBoxButtons.OK);
-                            break;
+                        break;
                     case "ABtnDetails":
                         ViewDetails(Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["APatID"].Value.ToString()));
                         break;
                     case "ABtnDelete":
-                        DeletePatient(Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["APatID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AStatusID"].Value.ToString()));                        
+                        DeletePatient(Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["APatID"].Value.ToString()), Int32.Parse(dgvApp.Rows[e.RowIndex].Cells["AStatusID"].Value.ToString()));
                         break;
                 }
                 getAppointmentList();
@@ -367,6 +370,7 @@ namespace HospitalERP
         {
             try
             {
+                this.WindowState = FormWindowState.Maximized;
                 if (startload == 1)
                     getAppointmentList();
             }
@@ -454,7 +458,7 @@ namespace HospitalERP
                     string msg = "";
                     if (ret >= 0)
                     {
-                        MessageBox.Show("Appointment Cancelled.","Information",MessageBoxButtons.OK);
+                        MessageBox.Show("Appointment Cancelled.", "Information", MessageBoxButtons.OK);
                         getAppointmentList(0);
 
                     }
@@ -469,7 +473,7 @@ namespace HospitalERP
                             case -5: msg = "Appointment cannot be cancelled as Medicines have been prescribed for the appointment"; break;
 
                         }
-                        MessageBox.Show(msg,"Information",MessageBoxButtons.OK);
+                        MessageBox.Show(msg, "Information", MessageBoxButtons.OK);
                     }
                 }
                 else
@@ -495,7 +499,7 @@ namespace HospitalERP
                 cmbDoc.Focus();
                 ****/
 
-                frmReferToDoctor frt = new frmReferToDoctor( Int32.Parse(txtPatientID.Text.Trim()));
+                frmReferToDoctor frt = new frmReferToDoctor(Int32.Parse(txtPatientID.Text.Trim()));
                 frt.ShowDialog(this);
 
             }
